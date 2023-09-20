@@ -1,8 +1,7 @@
-import logo from './logo.svg';
-import './App.css';
+import '../App.css';
 import React from "react";
-import Home from "./components/Home";
-import Root from "./components/Root";
+import Home from "../components/Home";
+import Root from "../components/Root";
 
 
 

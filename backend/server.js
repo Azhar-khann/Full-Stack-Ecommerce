@@ -8,6 +8,10 @@ const pool = require('./db/connect_to_db');
 const passwordHash = require('./utils/helper_functions');
 const swaggerUi = require('swagger-ui-express');
 const swaggerSpec = require('./swagger');
+const cors = require('cors');
+
+app.use(cors());
+
 app.use(express.json());
 
 
@@ -49,6 +53,7 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((id, done) => {
   done(null, {id})
 })
+
 
 
 passport.use(new LocalStrategy(
@@ -113,6 +118,6 @@ app.post('/login',passport.authenticate("local"), (req, res) => {
 
 
 
-app.listen(3000, () => {
-  console.log('Server listening on port 3000');
+app.listen(4000, () => {
+  console.log('Server listening on port 4000');
 });

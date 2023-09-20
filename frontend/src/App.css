@@ -29,3 +29,348 @@
   font-weight: 300;
   text-align: center;
 }
+
+.head {
+  background-color: whitesmoke;
+}
+
+.product_line  h1{
+  margin-top: 5%;
+  margin-bottom: 2%;
+}
+
+.product_line  h3{
+  margin-top: 5%;
+  margin-left: 2%;
+  font-weight: 300;
+  font-size: large;
+}
+
+.product_line  .col img {
+  transition: transform 0.3s;
+}
+
+.product_line .col:hover img {
+  transform: scale(1.1);
+}
+
+
+.gender h1, h4{
+  text-align: center;
+  margin-top: 5%;
+}
+
+.gender h4{
+  font-weight: 300;
+  margin-bottom: 5%;
+}
+
+.gender a{
+  margin-top: 8%;
+  align-content: center;
+  margin-left: 40%;
+}
+
+.iconic h1, h4{
+  text-align: center;
+  margin-top: 5%;
+  padding: 0;
+}
+
+.iconic h5{
+  font-weight: 300;
+  margin-bottom: 7%;
+  margin-top: 4%;
+  color: #7d7777;
+  text-align: center;
+}
+
+.iconic col{
+  padding:0;
+}
+
+
+
+/* .iconic .image{
+  background-image: url('./images/PhotoRoom_20230911_141550.jpg');
+  background-size: cover;
+  height: 350px;
+  margin-bottom: 3%;
+
+} */
+
+
+.iconic h6{
+  color:black;
+  margin-bottom: 2%;
+  font-size: 28px;
+  font-weight: 400;
+
+}
+
+.iconic .btn{
+  border-radius: 20px;
+
+}
+
+.footer{
+  margin-top: 5%;
+  background-color: whitesmoke;
+}
+
+
+.footer span{
+  font-size: small;
+  font-weight: 300;
+  text-align: center;
+}
+
+
+.view-all{
+  display: flex;
+  justify-content: end;
+  margin-bottom: 2%;
+}
+
+.view-all .btn{
+  margin-right:1%
+}
+
+
+
+
+
+
+
+
+
+
+
+.header{
+  margin-top: 7%;
+}
+
+.header h1{
+  font-size: 100px;
+  font-weight: 600;
+  margin-bottom: 5%;
+}
+
+.listings{
+  margin:0 9%;
+}
+
+.listings .product{
+  margin-bottom: 3%;
+}
+
+.listings .product img {
+  transition: transform 0.3s;
+  margin-bottom: 7%;
+}
+
+.listings .product :hover img {
+  transform: scale(1.1);
+}
+
+.product span{
+  color: #5b5b5b;
+}
+
+.product_name{
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  color: #221f1f;
+  display: block;
+}
+
+
+
+
+.product_detail{
+  margin-top: 5%;
+}
+
+.product_detail .img-fluid{
+  width:90%;
+  margin-left: 7%;
+  border-radius: 10px;
+}
+
+.product_detail .add_cart_button{
+  border-radius: 40px;
+  font-size: 16px;
+}
+
+.guranntee{
+  background-color: #fbfbfb;
+  margin-top: 5%;
+  padding-bottom: 6%;
+}
+
+.guranntee p{
+  color:gray;
+}
+
+.guranntee h3{
+  margin-top: 5%;
+  margin-bottom: 5%;
+  font-weight: 400;
+  color: #414546;
+  font-size: 30px;
+}
+
+.guranntee h5{
+  font-size: large;
+  color: #5a5a5a;
+  font-weight: bold;
+}
+
+
+.cart_checkout h1{
+  font-size: 90px;
+  font-family: sans-serif;
+  font-weight: 300;
+}
+
+.cart_row .items{
+  border: 1px solid rgb(162, 162, 162);
+  border-radius: 4px;
+  padding: 2%;
+}
+
+.ccart_row .items img{
+  width:100%;
+  height: auto;
+  border-radius: 5px;
+  margin-right: 5%;
+}
+
+.cart_row .items h5{
+  margin-top: 2%;
+  font-size: 17px;
+  font-weight: 400;
+
+}
+
+.cart_row .items h6{
+  margin-top: 4%;
+  font-size: 13px;
+  font-weight: 400;
+  color: #676363;
+
+}
+
+
+.item_columns{
+  background-color: whitesmoke;
+  margin-bottom: 6%;
+}
+
+
+.item_columns #price{
+  margin-left: 27%;
+}
+
+.cart_row{
+  margin-bottom: 3%;
+}
+
+.cart_row a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer; 
+}
+
+/* Hover effect */
+a:hover {
+  text-decoration: underline; 
+  color: rgb(117, 116, 116);
+}
+/* Click effect */
+a:active {
+  color: #ff5733;
+}
+
+
+
+.order_summary{
+  background-color: rgb(247 247 247);
+
+}
+
+.order_summary h4{
+  display: inline-block;
+  font-size: larger;
+  font-family: ui-rounded;
+}
+
+.register input,
+.login input{
+  width: 75%;
+  border-radius: 0px;
+}
+
+.register_btn{
+  font-size: 17px;
+  border-radius: 25px;
+  margin-left: 28%;
+
+}
+
+.register p,
+.login p{
+  width:100%;
+  text-align: center;
+}
+
+
+.register .facebook,
+.login .facebook{
+  margin: auto;
+  text-decoration: none;
+}
+
+.register form,
+.login form{
+  margin-left: 17%;
+  margin-top: 8%;
+}
+
+
+#register_heading h1,
+#login_heading h1{
+  margin-bottom: 2%;
+}
+
+.login_row{
+  margin-bottom: 11%;
+}
+
+.login_btn{
+  margin-top: 5%;
+  font-size: 17px;
+  border-radius: 3px;
+  margin-left: 28%;
+
+}
+
+
+
+.orders_row th{
+  padding:3%;
+}
+
+.orders_row .total_action{
+  padding: 2% 3%;
+} 
+
+#orders_heading h1{
+  margin-bottom: 1%;
+}
+
+.view_btn{
+  border-radius: 0px;
+  font-size: 13px;
+}
