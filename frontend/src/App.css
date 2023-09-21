@@ -40,9 +40,9 @@
 }
 
 .product_line  h3{
-  margin-top: 5%;
+  margin-top: 7%;
   margin-left: 2%;
-  font-weight: 300;
+  font-weight: 500;
   font-size: large;
 }
 
@@ -90,14 +90,13 @@
 }
 
 
-
-/* .iconic .image{
-  background-image: url('./images/PhotoRoom_20230911_141550.jpg');
+.iconic .image{
+  background-image: url('../public/images/iconic.jpg');
   background-size: cover;
   height: 350px;
   margin-bottom: 3%;
 
-} */
+} 
 
 
 .iconic h6{

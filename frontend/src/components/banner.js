@@ -3,7 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadbannerProduct,selectdata } from "../slices/bannerSlice";
 
 
-function banner(props) {
+function Banner() {
+
+    const dispatch = useDispatch();
+    const bannerProduct = useSelector(selectdata);
+
+
+    useEffect(() => {
+        dispatch(loadbannerProduct());
+    }, 
+    []);
 
     return(
         <div className="row head">
@@ -15,7 +24,7 @@ function banner(props) {
             </div>
 
             <div className="col-7 my-auto">
-                <img src={process.env.PUBLIC_URL + props.bannerimage} className ="img-fluid" alt="..."/>
+                <img src={process.env.PUBLIC_URL + bannerProduct.image_path} className ="img-fluid" alt="..."/>
             </div>
 
         </div>
@@ -24,4 +33,4 @@ function banner(props) {
 
 
 
-export default banner;
+export default Banner;

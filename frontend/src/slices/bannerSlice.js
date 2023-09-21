@@ -3,7 +3,7 @@ const { createAsyncThunk, createSlice } =  require("@reduxjs/toolkit");
 
 
 export const loadbannerProduct = createAsyncThunk(
-    'home/getData',
+    'banner/getData',
     async (type) => {
         const product = await getbannerProduct();
         return product
@@ -44,7 +44,7 @@ export const bannerSlice = createSlice({
 });
 
 
-export const selectdata = (state) => state.home.bannerProduct;
+export const selectdata = (state) => state.banner.bannerProduct;
 
-export const isLoadingData = (state) => state.home.isLoading;
+export const isLoadingData = (state) => state.banner.isLoading;
 export default bannerSlice.reducer;
