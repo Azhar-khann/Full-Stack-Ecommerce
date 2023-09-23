@@ -1,5 +1,5 @@
 import {React,useEffect} from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector, } from "react-redux";
 import { loadHomeProducts,selectfeatured,selectgender,selecteverydaySneakers,selectforRunners } from "../slices/homeSlice";
 import Banner from "./banner";
 
@@ -28,8 +28,8 @@ function Home() {
 
             {featuredProducts.map(product => {
                 return (
-                <div class="col">
-                    <a href="#"> <img src={process.env.PUBLIC_URL + product.image_path} class="img-fluid" alt="..."/> </a>
+                <div className="col">
+                    <a href="#"> <img src={process.env.PUBLIC_URL + product.image_path} className="img-fluid" alt="..."/> </a>
                     <h3>{product.brand} {product.name}</h3>
                 </div>
                 )}
@@ -93,7 +93,7 @@ function Home() {
 
         </div>
 
-        <div class="row iconic">
+        <div className="row iconic">
             <h1>
                 Always Iconic
             </h1>

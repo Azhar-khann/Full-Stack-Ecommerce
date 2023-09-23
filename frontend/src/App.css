@@ -156,7 +156,8 @@
 }
 
 .listings{
-  margin:0 9%;
+  margin:0 7%;
+  max-width: 87%;
 }
 
 .listings .product{
@@ -166,6 +167,7 @@
 .listings .product img {
   transition: transform 0.3s;
   margin-bottom: 7%;
+  
 }
 
 .listings .product :hover img {

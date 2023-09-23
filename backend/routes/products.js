@@ -47,6 +47,22 @@ productsRouter.get('/category/:category' , (req, res) => {
   })
 });
 
+// filter products based on brand,category or gender
+productsRouter.get('/:filter/:name' , (req, res) => {
+
+  const {filter,name} = req.params
+
+  pool.query(`SELECT * FROM products where ${filter} = $1`, [name], (error, results) => {
+      if (error) {
+        res.status(500).send('Internal Server Error' );
+      }
+      if (results.rows.length === 0){
+        return res.status(404).send('No products found');
+      }
+      res.status(200).json(results.rows)
+  })
+});
+
 
 // create product
 productsRouter.post('/' , (req, res) => {

@@ -24,7 +24,7 @@ function Banner() {
             </div>
 
             <div className="col-7 my-auto">
-                <img src={process.env.PUBLIC_URL + bannerProduct.image_path} className ="img-fluid" alt="..."/>
+                <img src={process.env.PUBLIC_URL + '/images/banner.jpg'} className ="img-fluid" alt="..."/>
             </div>
 
         </div>
