@@ -18,12 +18,13 @@ productsRouter.get('/' , (req, res) => {
 productsRouter.get('/:id' , (req, res) => {
 
   const id = parseInt(req.params.id)
+  console.log(id)
 
   pool.query('SELECT * FROM products where id = $1', [id], (error, results) => {
       if (error) {
         res.status(500).send('Internal Server Error' );
       }
-      if (results.rowCount === 0) {
+      if (results.rows.length === 0) {
         return res.status(404).send('Product not found' );
       }
       res.status(200).json(results.rows)

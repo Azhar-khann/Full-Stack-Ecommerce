@@ -7,12 +7,11 @@ const forRunnersIds = [10,9,15,3];
 
 
 
-export async function getbannerProduct() {
-    const response = await fetch(`${API_ENDPOINT}/products`)
+export async function getProductbyId(id) {
+    const response = await fetch(`${API_ENDPOINT}/products/${id}`)
     .then(async response =>{
-        const data =  await response.json();
-        const bannerProduct = data.find(product => product.id === 6);
-        return bannerProduct
+        const product =  await response.json();
+        return product
     })
     return response
 }
@@ -33,7 +32,6 @@ export async function getFeaturedProducts() {
 }
 
 export async function getFilterProducts(filter,name){
-    console.log(name)
     const response = await fetch(`${API_ENDPOINT}/products/${filter}/${name}`)
     .then(async response =>{
         const data =  await response.json();

@@ -10,7 +10,7 @@ function Banner() {
 
 
     useEffect(() => {
-        dispatch(loadbannerProduct());
+        dispatch(loadbannerProduct(6));
     }, 
     []);
 

@@ -1,6 +1,7 @@
 import {React,useEffect} from "react";
 import { useDispatch, useSelector, } from "react-redux";
 import { loadHomeProducts,selectfeatured,selectgender,selecteverydaySneakers,selectforRunners } from "../slices/homeSlice";
+import { Link } from "react-router-dom";
 import Banner from "./banner";
 
 
@@ -29,7 +30,7 @@ function Home() {
             {featuredProducts.map(product => {
                 return (
                 <div className="col">
-                    <a href="#"> <img src={process.env.PUBLIC_URL + product.image_path} className="img-fluid" alt="..."/> </a>
+                    <Link to={`product/${product.id}`}> <img src={process.env.PUBLIC_URL + product.image_path} className="img-fluid" alt="..."/> </Link>
                     <h3>{product.brand} {product.name}</h3>
                 </div>
                 )}
@@ -45,12 +46,12 @@ function Home() {
 
             <div className="col-4 offset-2">
                 <img src={process.env.PUBLIC_URL + gender[0].image_path}  className="img-fluid" alt="..."/>
-                <a className="btn btn-outline-dark" href="category.html">Shop Men</a>
+                <Link to={'/gender/men/products'} className="btn btn-outline-dark text-decoration-none" href="category.html">Shop Men</Link>
             </div>
 
             <div className="col-4">
                 <img src={process.env.PUBLIC_URL + gender[1].image_path}  className="img-fluid" alt="..."/>
-                <a className="btn btn-outline-dark" href="category.html">Shop Women</a>
+                <Link to={'/gender/women/products'} className="btn btn-outline-dark text-decoration-none" href="category.html">Shop Women</Link>
             </div>
 
         </div>
@@ -60,13 +61,13 @@ function Home() {
 
             <h1>Everyday Sneakers</h1>
             <div className="view-all">
-                <a className="btn btn-outline-dark" href="category.html">view all</a>
+                <Link to={'/category/sneakers/products'} className="btn btn-outline-dark" href="category.html">view all</Link>
             </div>
 
             {everydaySneakers.map(product => {
                 return (
                 <div className="col">
-                    <a href="#"> <img src={process.env.PUBLIC_URL + product.image_path} className="img-fluid" alt="..."/> </a>
+                    <Link to={`product/${product.id}`}> <img src={process.env.PUBLIC_URL + product.image_path} className="img-fluid" alt="..."/> </Link>
                     <h3>{product.brand} {product.name}</h3>
                 </div>
                 )}
@@ -79,13 +80,13 @@ function Home() {
 
             <h1>For Runners</h1>
             <div className="view-all">
-                <a className="btn btn-outline-dark" href="category.html">view all</a>
+                <Link to={'/category/runners/products'} className="btn btn-outline-dark" href="category.html">view all</Link>
             </div>
 
             {forRunners.map(product => {
                 return (
                 <div className="col">
-                    <a href="#"> <img src={process.env.PUBLIC_URL + product.image_path} className="img-fluid" alt="..."/> </a>
+                    <Link to={`product/${product.id}`}> <img src={process.env.PUBLIC_URL + product.image_path} className="img-fluid" alt="..."/> </Link>
                     <h3>{product.brand} {product.name}</h3>
                 </div>
                 )}
@@ -107,7 +108,7 @@ function Home() {
             </div>
 
             <div className="col text-center">
-                <a className="btn btn-outline-dark " href="category.html">View collection</a>
+                <a className="btn btn-outline-dark text-decoration-none" href="category.html">View collection</a>
             </div>
             
         </div>

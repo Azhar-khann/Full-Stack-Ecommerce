@@ -1,6 +1,6 @@
 import {React,useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams,useLocation } from "react-router-dom";
+import { useParams,useLocation,Link } from "react-router-dom";
 import { loadProducts,selectdata } from "../slices/productsSlice";
 
 
@@ -24,7 +24,7 @@ function Products() {
         <div className="row header">
 
             <div className="col text-center">
-                <h1>
+                <h1 style={{textTransform: 'capitalize'}}>
                     {name}
                 </h1>
             </div>
@@ -36,8 +36,8 @@ function Products() {
                     console.log(product)
                     return (
                         <div className="col-3 product">
-                            <a href="#"> <img src={process.env.PUBLIC_URL + product.image_path} className="img-fluid" alt="..."/> </a>
-                            <a href="#" className="product_name">{product.brand} {product.name}</a>
+                            <Link to={`/product/${product.id}`}> <img src={process.env.PUBLIC_URL + product.image_path} className="img-fluid" alt="..."/> </Link>
+                            <Link to={`/product/${product.id}`} className="product_name">{product.brand} {product.name}</Link>
                             <span>${product.price}</span>
                         </div>
                     )}
