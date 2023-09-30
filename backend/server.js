@@ -5,12 +5,22 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcrypt");
 const pool = require('./db/connect_to_db');
-const passwordHash = require('./utils/helper_functions');
+const {passwordHash} = require('./utils/helper_functions');
 const swaggerUi = require('swagger-ui-express');
 const swaggerSpec = require('./swagger');
 const cors = require('cors');
+const keys = require('./keys')
+const googleStrategy = require('passport-google-oauth20')
 
-app.use(cors());
+app.use(express.urlencoded({ extended: false }));
+
+app.use(cors({
+  origin: 'http://localhost:3000',
+  methods: ["GET" , "POST"],
+  credentials:true
+}));
+
+
 
 app.use(express.json());
 
@@ -32,13 +42,13 @@ app.use('/order', ordersRouter)
 
 
 const store = new session.MemoryStore();
-// session middleware below:
+
 app.use(
   session({
     secret: "D53gxl41G",
     resave: false,
     saveUninitialized: false,
-    cookie: {secure: true, sameSite: "none" },
+    cookie: { maxAge: 300000000, secure: false, domain: 'localhost', path: '/',secure: false },
     store,
   })
 );
@@ -47,14 +57,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.serializeUser((user, done) => {
-  done(null, user.id);
+  done(null, {id:user.id, firstname:user.firstname});
 });
 
 passport.deserializeUser((id, done) => {
   done(null, {id})
 })
-
-
 
 passport.use(new LocalStrategy(
 
@@ -64,6 +72,7 @@ passport.use(new LocalStrategy(
 
       // if error looking up in database
       if (error) {
+        console.log('from error')
         return done(error)
       }
 
@@ -88,33 +97,83 @@ passport.use(new LocalStrategy(
 ));  
 
 
+passport.use(new googleStrategy({
+  callbackURL: '/google/redirect',
+  clientID: keys.google.cliendId,
+  clientSecret: keys.google.clientSecret
+  },(accessToken, refreshToken, profile, done) => {
 
+    const id = profile.id
+    console.log(profile)
+    const firstname = profile.name.givenName;
+    const lastname = profile.name.familyName;
+
+    pool.query('INSERT INTO users (id, firstname, lastname) VALUES ($1, $2, $3)', [id, firstname,lastname], (error, results) => {
+
+      if (error) {
+        console.log('error in server is:',error)
+        //res.status(500).send("Unable to create user!");
+      }
+      else{
+        passport.authenticate("local")(req, res,next);
+        //res.redirect('http://localhost:3000')
+      
+      }
+    })
+
+  })
+) 
+
+app.get('/google',passport.authenticate('google',{
+  scope:['profile']
+}))
+
+app.get('/google/redirect',passport.authenticate('google'), (req,res) => {
+  console.log('you reached callback uri')
+  //res.redirect('http://localhost:3000')
+}) 
 
 
 app.get('/', (req, res) => {
   res.send('<h1>Hello from your Express.js server!!</h1>');
 });
   
-app.post("/register", async (req, res) => {
-  const { username, password } = req.body;
+app.post("/register", async (req, res,next) => {
+  const { firstName,lastName, username, password } = req.body;
+  console.log(username)
   const hashPassword = await passwordHash(password,10)
 
-  pool.query('INSERT INTO users (username, password) VALUES ($1, $2)', [username, hashPassword], (error, results) => {
+  pool.query('INSERT INTO users (username, password, firstname, lastname) VALUES ($1, $2, $3, $4)', [username, hashPassword,firstName,lastName], (error, results) => {
 
     if (error) {
+      console.log('error in server is:',error)
       res.status(500).send("Unable to create user!");
     }
     else{
-      res.status(201).send('User successfully created')
+      passport.authenticate("local")(req, res,next);
+    
     }
 
   })
+  
 
 });
 
 app.post('/login',passport.authenticate("local"), (req, res) => {
-  res.status(200).send('Successfully Authenticated')
+  const {id,firstname} = req.user;
+  res.status(201).send()
+  console.log('id=',id)
 });
+
+app.get('/checkauth', (req, res) => {
+  const user = req.user
+  if (req.user){
+    const {id,firstname} = user.id;
+    res.status(201).json({LoggedIn: true, id:id, firstname: firstname})
+  } else{
+    res.status(500).json({LoggedIn: false})
+  }
+})
 
 
 

@@ -39,3 +39,14 @@ export async function getFilterProducts(filter,name){
     })
     return response
 }
+
+export async function checkLogin(){
+    const response = await fetch(`${API_ENDPOINT}/checkauth`,{
+        credentials: 'include'
+    })
+    .then(async response =>{
+        const {LoggedIn,id,firstname} =  await response.json();
+        return {LoggedIn,id,firstname}
+    })
+    return response
+}

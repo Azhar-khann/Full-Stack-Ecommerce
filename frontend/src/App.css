@@ -1,3 +1,4 @@
+
 .navigation .col{
   padding:0;
 }
@@ -6,6 +7,21 @@
   padding-top: 1%;
   padding-bottom: 0.5%;
   margin-left: 2%;
+}
+.profileIcon{
+  border: 1px solid;
+  border-radius: 30px;
+  padding: 2px;
+}
+
+
+#userfirstname{
+  font-size: 15px;
+  color: #817e7e;
+  font-weight: 500;
+}
+#userfirstname:hover {
+  color: #222222; /* Change color on hover */
 }
 
 .cart_icon{
@@ -287,11 +303,11 @@
 /* Hover effect */
 a:hover {
   text-decoration: underline; 
-  color: rgb(117, 116, 116);
+  color: rgb(2, 2, 204);
 }
 /* Click effect */
 a:active {
-  color: #ff5733;
+  color: #00026d;
 }
 
 
@@ -340,6 +356,7 @@ a:active {
 }
 
 
+
 #register_heading h1,
 #login_heading h1{
   margin-bottom: 2%;
@@ -353,7 +370,7 @@ a:active {
   margin-top: 5%;
   font-size: 17px;
   border-radius: 3px;
-  margin-left: 28%;
+  margin-left: 26%;
 
 }
 

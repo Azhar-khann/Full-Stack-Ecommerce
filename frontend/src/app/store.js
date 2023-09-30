@@ -3,6 +3,7 @@ import bannerSliceReducer from "../slices/bannerSlice";
 import homeSliceReducer from "../slices/homeSlice";
 import productsSliceReducer from "../slices/productsSlice";
 import productDetailsSliceReducer from "../slices/productDetailsSlice";
+import loginStatusSliceReducer  from "../slices/loginstatus";
 
 export default configureStore({
     reducer: {
@@ -10,5 +11,6 @@ export default configureStore({
         banner: bannerSliceReducer,
         products: productsSliceReducer,
         productDetails: productDetailsSliceReducer,
+        loginstatus: loginStatusSliceReducer
     },
 });

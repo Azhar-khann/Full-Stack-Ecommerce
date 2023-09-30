@@ -18,7 +18,6 @@ productsRouter.get('/' , (req, res) => {
 productsRouter.get('/:id' , (req, res) => {
 
   const id = parseInt(req.params.id)
-  console.log(id)
 
   pool.query('SELECT * FROM products where id = $1', [id], (error, results) => {
       if (error) {
