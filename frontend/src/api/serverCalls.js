@@ -41,7 +41,7 @@ export async function getFilterProducts(filter,name){
 }
 
 export async function checkLogin(){
-    const response = await fetch(`${API_ENDPOINT}/checkauth`,{
+    const response = await fetch(`${API_ENDPOINT}/loggedInUserInfo`,{
         credentials: 'include'
     })
     .then(async response =>{

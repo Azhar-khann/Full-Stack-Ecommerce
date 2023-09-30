@@ -16,8 +16,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(cors({
   origin: 'http://localhost:3000',
-  methods: ["GET" , "POST"],
-  credentials:true
+  credentials: true  
 }));
 
 
@@ -57,11 +56,13 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.serializeUser((user, done) => {
-  done(null, {id:user.id, firstname:user.firstname});
+  done(null, user.id);
 });
 
 passport.deserializeUser((id, done) => {
-  done(null, {id})
+  pool.query('SELECT * FROM users where id = $1', [id], (error, results) => {
+    done(null,results.rows[0])
+  })
 })
 
 passport.use(new LocalStrategy(
@@ -108,16 +109,14 @@ passport.use(new googleStrategy({
     const firstname = profile.name.givenName;
     const lastname = profile.name.familyName;
 
-    pool.query('INSERT INTO users (id, firstname, lastname) VALUES ($1, $2, $3)', [id, firstname,lastname], (error, results) => {
+    pool.query('SELECT * FROM users where id = $1', [id], (error, results) => {
 
-      if (error) {
-        console.log('error in server is:',error)
-        //res.status(500).send("Unable to create user!");
-      }
-      else{
-        passport.authenticate("local")(req, res,next);
-        //res.redirect('http://localhost:3000')
-      
+      if (results.rowCount === 0) {
+        pool.query('INSERT INTO users (id, firstname, lastname) VALUES ($1, $2, $3)', [id, firstname,lastname])
+        done(null,{id,firstname,lastname})
+
+      } else{
+        done(null,results.rows[0])
       }
     })
 
@@ -130,7 +129,7 @@ app.get('/google',passport.authenticate('google',{
 
 app.get('/google/redirect',passport.authenticate('google'), (req,res) => {
   console.log('you reached callback uri')
-  //res.redirect('http://localhost:3000')
+  res.redirect('http://localhost:3000')
 }) 
 
 
@@ -160,15 +159,12 @@ app.post("/register", async (req, res,next) => {
 });
 
 app.post('/login',passport.authenticate("local"), (req, res) => {
-  const {id,firstname} = req.user;
   res.status(201).send()
-  console.log('id=',id)
 });
 
-app.get('/checkauth', (req, res) => {
-  const user = req.user
-  if (req.user){
-    const {id,firstname} = user.id;
+app.get('/loggedInUserInfo', (req, res) => {
+  if (req.isAuthenticated()){
+    const {id,firstname} = req.user;
     res.status(201).json({LoggedIn: true, id:id, firstname: firstname})
   } else{
     res.status(500).json({LoggedIn: false})
