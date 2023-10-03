@@ -1,9 +1,9 @@
 import { getProductbyId } from "../api/serverCalls";
 const { createAsyncThunk, createSlice } =  require("@reduxjs/toolkit");
 
-
+//chaged from banner/getdata to product/getdata
 export const loadProduct = createAsyncThunk(
-    'banner/getData',
+    'product/getData',
     async (id) => {
         const product = await getProductbyId(id);
         return product

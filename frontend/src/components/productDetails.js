@@ -1,16 +1,45 @@
-import {React,useEffect} from "react";
+import {React,useEffect,useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import { loadProduct,selectdata } from "../slices/productDetailsSlice";
+import { loadcart } from "../slices/cartSlice";
 
 
 function Productdetails() {
 
+    const [product_size_id, setProduct_size_id] = useState();
+    const [quantity, setquantity] = useState();
+    const [error, setError] = useState('')
+    console.log(product_size_id)
+
+    const handleSize = (e) => {
+        setProduct_size_id(e.target.value);        
+    }
+    const handleQuantity = (e) => {
+        setquantity(e.target.value);      
+    }
+
+    async function handleSubmit(e) {
+        e.preventDefault();
+        const data = {product_size_id,quantity}
+        const response = await fetch('http://localhost:4000/cart/user',{
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(data),
+            credentials: 'include',
+        }) 
+        .then(async response => {
+            const status =  response.status;
+            if (status === 200) {
+                dispatch(loadcart())
+            }
+        })
+    }
+    
+
     const {ProductId} = useParams();
     const dispatch = useDispatch();
-    const product = useSelector(selectdata)[0];
-    console.log(product)
-
+    const product = useSelector(selectdata);
 
     useEffect(() => {
         dispatch(loadProduct(ProductId));
@@ -40,47 +69,39 @@ function Productdetails() {
 
                 <p class="mb-4 text-muted">{product && product.description}</p>
 
-                <form action="#">
+                <form onSubmit={handleSubmit}>
 
                     <div class="row">
                         <div class="col-sm-6 col-lg-12 detail-option mb-3">
 
                             <h6 class="detail-option-heading mb-4">Size <span>(required)</span></h6>
 
-                            <label class="btn btn-sm btn-outline-secondary detail-option-btn-label mb-3 mx-2 p-2" for="size_0"> 7.0
-                            <input class="input-invisible mx-2" type="radio" name="size" value="value_0" id="size_0" required=""/>
-                            </label>
-
-                            <label class="btn btn-sm btn-outline-secondary detail-option-btn-label mx-2 mb-3 p-2" for="size_1"> 8.0
-                                <input class="input-invisible mx-2" type="radio" name="size" value="value_1" id="size_1" required=""/>
-                            </label>
-
-                            <label class="btn btn-sm btn-outline-secondary detail-option-btn-label mx-2 mb-3 p-2" for="size_2"> 9.0
-                                <input class="input-invisible mx-2" type="radio" name="size" value="value_2" id="size_2" required=""/>
-                            </label>
+                            {Object.keys(product).length > 0 && Object.keys(product.product_size_ids).map(size => (
+                                <label class="btn btn-sm btn-outline-secondary detail-option-btn-label mb-3 mx-2 p-2" for={size}> {size} 
+                                    <input class="input-invisible mx-2" type="radio" name="size" value={product.product_size_ids[size]}  id={size} required="" onClick={handleSize}/>
+                                </label>
+                            ))}
 
                         </div>
         
                         <div class="col-12 col-lg-6 detail-option mb-5">
                             <label class="detail-option-heading fw-bold mb-2">Quantity <span>(required)</span></label>
-                            <input class="form-control detail-quantity" name="items" type="number" max={product && product.quantity}/>
+                            <input class="form-control detail-quantity" style={{width: '46%'}} name="num" type="number"  min={1} max={product && product.quantity} onChange={handleQuantity} value={quantity}/>
                         </div>
 
                     </div>
 
                     <ul class="list-inline">
                         <li class="list-inline-item">
-                            <button class="btn btn-dark btn-lg mb-1 add_cart_button" type="submit"> <i class="fa fa-shopping-cart"></i>Add to Cart</button>
+                            <button class="btn btn-dark btn-lg mb-1 add_cart_button" type="submit"> <i class="fa fa-shopping-cart"></i> Add to Cart</button>
+                            <span style={{ color: 'red', display:'block' }}>{error}</span>
                         </li>
                     </ul>
 
                 </form>
 
             </div>
-        </div>
-
-
-        
+        </div>        
 
         <div class="row guranntee justify-content-evenly">
 
@@ -112,7 +133,7 @@ function Productdetails() {
         </div>
 
 
-      </div>
+        </div>
 
 
     </>

@@ -6,6 +6,7 @@ import Root from "../components/Root";
 import Productdetails from '../components/productDetails';
 import Register from '../components/register';
 import Login from '../components/login';
+import Cart from '../components/cart';
 
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 
@@ -19,6 +20,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route path='/product/:ProductId' element={<Productdetails/>}/>
     <Route path='/register' element={<Register/>}/>
     <Route path='/login' element={<Login/>}/>
+    <Route path='/cart' element={<Cart/>}/>
   </Route>
   
 ))

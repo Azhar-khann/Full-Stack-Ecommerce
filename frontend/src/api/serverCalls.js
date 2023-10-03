@@ -50,3 +50,14 @@ export async function checkLogin(){
     })
     return response
 }
+
+export async function getUserCart(){
+    const response = await fetch(`${API_ENDPOINT}/cart/user`,{
+        credentials: 'include'
+    })
+    .then(async response =>{
+        const data =  await response.json();
+        return data
+    })
+    return response
+}

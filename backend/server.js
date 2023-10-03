@@ -19,24 +19,7 @@ app.use(cors({
   credentials: true  
 }));
 
-
-
 app.use(express.json());
-
-
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-
-const productsRouter = require('./routes/products')
-app.use('/products', productsRouter);
-
-const usersRouter = require('./routes/users')
-app.use('/users',usersRouter);
-
-const cartRouter = require('./routes/cart')
-app.use('/cart', cartRouter)
-
-const ordersRouter = require('./routes/orders')
-app.use('/order', ordersRouter)
 
 
 
@@ -64,6 +47,24 @@ passport.deserializeUser((id, done) => {
     done(null,results.rows[0])
   })
 })
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+const productsRouter = require('./routes/products')
+app.use('/products', productsRouter);
+
+const usersRouter = require('./routes/users')
+app.use('/users',usersRouter);
+
+const cartRouter = require('./routes/cart')
+app.use('/cart', cartRouter)
+
+const ordersRouter = require('./routes/orders')
+app.use('/order', ordersRouter)
+
+
+
+
 
 passport.use(new LocalStrategy(
 
@@ -159,7 +160,7 @@ app.post("/register", async (req, res,next) => {
 });
 
 app.post('/login',passport.authenticate("local"), (req, res) => {
-  res.status(201).send()
+  res.status(201).send('user successfully logged in')
 });
 
 app.get('/loggedInUserInfo', (req, res) => {

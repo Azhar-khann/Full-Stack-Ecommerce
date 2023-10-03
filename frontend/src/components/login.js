@@ -2,6 +2,8 @@ import {React,useState} from "react";
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import { loginstatus } from "../slices/loginstatus";
+import { loadcart } from "../slices/cartSlice";
+
 
 function Login(){
 
@@ -28,6 +30,7 @@ function Login(){
                 throw new Error('Server error');
             } else{
                 dispatch(loginstatus())
+                dispatch(loadcart())
                 navigate({pathname:'/'})
                 
             }

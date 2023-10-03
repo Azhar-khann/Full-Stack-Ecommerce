@@ -1,7 +1,4 @@
 
-export function find(url){
-    if (url.includes('brand')){
-        return []
-    }
-
+export function Total(price,quantity){
+    return price*quantity;
 }

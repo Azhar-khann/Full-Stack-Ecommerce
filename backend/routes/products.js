@@ -18,15 +18,26 @@ productsRouter.get('/' , (req, res) => {
 productsRouter.get('/:id' , (req, res) => {
 
   const id = parseInt(req.params.id)
+  const query = `SELECT products.id, brand, name, category, gender, price, quantity, image_path, description,size, product_sizes.id as product_size_ids  FROM products
+  JOIN product_sizes ON products.id = product_sizes.product_id WHERE products.id = $1`
 
-  pool.query('SELECT * FROM products where id = $1', [id], (error, results) => {
-      if (error) {
-        res.status(500).send('Internal Server Error' );
-      }
-      if (results.rows.length === 0) {
-        return res.status(404).send('Product not found' );
-      }
-      res.status(200).json(results.rows)
+  pool.query(query, [id], (error, results) => {
+    if (error) {
+      return res.status(500).send('Internal Server Error' );
+    }
+    if (results.rows.length === 0) {
+      return res.status(404).send('Product not found' );
+    }
+    /* const productSizeIds = results.rows.map(product => product.product_size_ids);
+    res.status(200).json({...results.rows[0], product_size_ids:productSizeIds}) */
+
+    const productSizeIds = {};
+    for (let i = 0; i < results.rows.length; i++) {
+      productSizeIds[results.rows[i].size] = results.rows[i].product_size_ids;
+    }
+
+    res.status(200).json({...results.rows[0], size:undefined, product_size_ids:productSizeIds}) 
+
   })
 });
 

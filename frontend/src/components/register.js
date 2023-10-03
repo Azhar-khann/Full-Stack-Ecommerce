@@ -3,6 +3,8 @@ import { useNavigate,Link } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import { loginstatus } from "../slices/loginstatus";
 
+
+
 function Register(){
 
     const [firstName, setfirstName] = useState();
@@ -87,7 +89,7 @@ function Register(){
                     </div>
 
                     <span style={{ color: 'red', marginBottom: '2%', marginLeft:'10%', display:'block' }}>{error}</span>
-                    <button class="btn btn-dark btn-lg mb-1 mt-2 px-4 register_btn text-center" type="submit"> <i class="fa fa-shopping-cart"></i>Register</button>
+                    <button class="btn btn-dark btn-lg mb-1 mt-2 px-4 register_btn text-center" type="submit">Register</button>
 
                 </form>
 
