@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import { loadProduct,selectdata } from "../slices/productDetailsSlice";
 import { loadcart } from "../slices/cartSlice";
+import { selectstatus } from "../slices/loginstatus";
 
 
 function Productdetails() {
@@ -10,7 +11,7 @@ function Productdetails() {
     const [product_size_id, setProduct_size_id] = useState();
     const [quantity, setquantity] = useState();
     const [error, setError] = useState('')
-    console.log(product_size_id)
+    const {LoggedIn} = useSelector(selectstatus)
 
     const handleSize = (e) => {
         setProduct_size_id(e.target.value);        
@@ -93,7 +94,8 @@ function Productdetails() {
 
                     <ul class="list-inline">
                         <li class="list-inline-item">
-                            <button class="btn btn-dark btn-lg mb-1 add_cart_button" type="submit"> <i class="fa fa-shopping-cart"></i> Add to Cart</button>
+                            {LoggedIn && <button class="btn btn-dark btn-lg mb-1 add_cart_button" type="submit"> <i class="fa fa-shopping-cart"></i> Add to Cart</button>}
+                            {!LoggedIn && <Link to={'/login'} class="btn btn-dark btn-lg mb-1 add_cart_button" type="submit"> <i class="fa fa-shopping-cart"></i> Add to Cart</Link>}
                             <span style={{ color: 'red', display:'block' }}>{error}</span>
                         </li>
                     </ul>

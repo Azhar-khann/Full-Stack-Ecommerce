@@ -1,7 +1,6 @@
-const crypto = require('crypto');
+const currentDate = new Date();
 
-const googleId = '112814385211037693989';
+  // You can format the date as needed, for example:
+const formattedDate = currentDate.toLocaleDateString(); // "mm/dd/yyyy"
 
-const hashedId = crypto.createHash('sha256').update(googleId).digest('hex');
-
-console.log(hashedId);
+console.log(formattedDate)

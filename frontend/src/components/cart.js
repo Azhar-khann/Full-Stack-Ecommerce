@@ -8,6 +8,7 @@ function Cart(){
 
     const dispatch = useDispatch();
     const cart = useSelector(selectdata)
+    console.log(cart)
 
     useEffect(() => {
         dispatch(loadcart());
@@ -102,7 +103,7 @@ function Cart(){
         
         <div class="row">
             <div class="col text-center">
-                <a class="btn btn-outline-dark p-2 border-1 text-decoration-none" href="#">Proceed to Checkout</a>
+                <Link to={'/checkout'} class="btn btn-outline-dark p-2 border-1 text-decoration-none" href="#">Proceed to Checkout</Link>
             </div>
         </div>
 

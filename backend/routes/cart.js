@@ -93,24 +93,18 @@ cartRouter.delete('/user/:product_size_id' , (req, res) => {
 });
 
 
-cartRouter.post('/user/checkout/:user_id', (req, res) => {
+cartRouter.post('/user/checkout', (req, res) => {
 
-    const user_id  = req.params.user_id;
-    const {date} = req.body;
-    const { cardNumber, expirationMonth, expirationYear, cvv } = req.body;
-    const isValidCreditCard = validateCreditCard(cardNumber, expirationMonth, expirationYear, cvv);
+    const {date,email,address,address2,city,zip,nameOnCard, cardNumber, expiration, cvv } = req.body;
+    //const isValidCreditCard = validateCreditCard(cardNumber, expirationMonth, expirationYear, cvv);
 
-    pool.query(query, [user_id], (error, results) => {
+    pool.query(query, [req.user.id], (error, results) => {
 
         if (results.rowCount === 0) {
             return res.status(404).send( 'no items in cart' );
         }
-        if (isValidCreditCard === true){
-            return createOrder(user_id,date,res);
-            
-        }
-        else{
-            return res.status(404).send( 'invalid card details' );
+        else {
+            return createOrder(req.user.id,date,email,address,address2,city,zip ,res);          
         }
 
     })

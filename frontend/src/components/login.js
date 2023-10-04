@@ -37,7 +37,7 @@ function Login(){
         })
         .catch(error => {
             console.error(error);
-            setError('An error has occurred. Please try again');
+            setError('An error has occurred. Please check your username and passowrd.');
         })
     } 
 

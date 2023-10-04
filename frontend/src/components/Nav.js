@@ -12,10 +12,21 @@ function Nav() {
   const {LoggedIn,firstname} = useSelector(selectstatus);
   const cartItems = useSelector(selectdata).length
   const [vibrate, setVibrate] = useState(false);
+  const [loginStatusFinished, setLoginStatusFinished] = useState(false);
 
   useEffect(() => {
-    dispatch(loginstatus());
-  },[]); 
+    dispatch(loginstatus())
+      .then(() => {
+        setLoginStatusFinished(true);
+      })
+  }, []);
+
+  useEffect(() => {
+    if (loginStatusFinished && LoggedIn === true) {
+      dispatch(loadcart());
+    }
+  }, [loginStatusFinished]);
+  
 
   useEffect(() => {
     // Trigger vibrate effect whenever cartItems changes
