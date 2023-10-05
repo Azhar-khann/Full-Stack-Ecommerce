@@ -10,7 +10,10 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerSpec = require('./swagger');
 const cors = require('cors');
 const keys = require('./keys')
-const googleStrategy = require('passport-google-oauth20')
+const googleStrategy = require('passport-google-oauth20');
+const stripe = require("stripe")(keys.stripe.secretKey);
+
+
 
 app.use(express.urlencoded({ extended: false }));
 
@@ -172,6 +175,34 @@ app.get('/loggedInUserInfo', (req, res) => {
   }
 })
 
+
+// checkout api
+app.post("/api/create-checkout-session",async(req,res)=>{
+  const {products} = req.body;
+
+
+  const lineItems = products.map((product)=>({
+      price_data:{
+          currency:"usd",
+          product_data:{
+            name:product.name
+          },
+          unit_amount:product.price * 100,
+      },
+      quantity:product.quantity
+  }));
+
+  const session = await stripe.checkout.sessions.create({
+      payment_method_types:["card"],
+      line_items:lineItems,
+      mode:"payment",
+      success_url:"http://localhost:3000/thankyou",
+      cancel_url:"http://localhost:3000/cart",
+  });
+
+  res.json({id:session.id})
+
+})
 
 
 app.listen(4000, () => {

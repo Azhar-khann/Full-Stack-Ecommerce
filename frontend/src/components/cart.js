@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { loadcart,selectdata } from "../slices/cartSlice";
 import { Total } from "../util/helperfunc";
+import {loadStripe} from '@stripe/stripe-js';
+
 
 function Cart(){
 
@@ -26,6 +28,33 @@ function Cart(){
                 dispatch(loadcart())
             }
         })
+    }
+
+    // payment integration
+    const makePayment = async()=>{
+        const stripe = await loadStripe('pk_test_kKgyCXVx78tLCpcQaKlSlEs6');
+
+        const body = {
+            products:cart
+        }
+        const headers = {
+            "Content-Type":"application/json"
+        }
+        const response = await fetch("http://localhost:4000/api/create-checkout-session",{
+            method:"POST",
+            headers:headers,
+            body:JSON.stringify(body)
+        });
+
+        const session = await response.json();
+
+        const result = stripe.redirectToCheckout({
+            sessionId:session.id
+        });
+        
+        if(result.error){
+            console.log(result.error);
+        }
     }
 
     return(
@@ -103,7 +132,7 @@ function Cart(){
         
         <div class="row">
             <div class="col text-center">
-                <Link to={'/checkout'} class="btn btn-outline-dark p-2 border-1 text-decoration-none" href="#">Proceed to Checkout</Link>
+                <button class="btn btn-outline-dark p-2 border-1 text-decoration-none" onClick={makePayment}>Proceed to Checkout</button>
             </div>
         </div>
 

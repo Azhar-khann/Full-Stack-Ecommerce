@@ -33,7 +33,7 @@ function validateCreditCard(cardNumber, expirationMonth, expirationYear, cvv) {
 
 }
 
-async function createOrder(user_id,date,email,address,address2,city,zip,res) {
+async function createOrder(user_id,date,res) {
 
   const addorder =`insert into orders(user_id,date) values($1,$2);`
   
@@ -60,7 +60,7 @@ async function createOrder(user_id,date,email,address,address2,city,zip,res) {
 
     await pool.query(addOrderDetails)
 
-    await pool.query(addUserAdress,[user_id,address,address2,city,zip,email])
+    //await pool.query(addUserAdress,[user_id,address,address2,city,zip,email])
 
     await pool.query(deleteFromCart, [user_id])
 

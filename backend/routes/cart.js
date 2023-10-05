@@ -95,8 +95,7 @@ cartRouter.delete('/user/:product_size_id' , (req, res) => {
 
 cartRouter.post('/user/checkout', (req, res) => {
 
-    const {date,email,address,address2,city,zip,nameOnCard, cardNumber, expiration, cvv } = req.body;
-    //const isValidCreditCard = validateCreditCard(cardNumber, expirationMonth, expirationYear, cvv);
+    const {date} = req.body;
 
     pool.query(query, [req.user.id], (error, results) => {
 
@@ -104,7 +103,7 @@ cartRouter.post('/user/checkout', (req, res) => {
             return res.status(404).send( 'no items in cart' );
         }
         else {
-            return createOrder(req.user.id,date,email,address,address2,city,zip ,res);          
+            return createOrder(req.user.id,date,res);          
         }
 
     })

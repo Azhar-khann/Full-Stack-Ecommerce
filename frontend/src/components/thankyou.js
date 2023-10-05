@@ -1,11 +1,48 @@
-import React from "react";
+import {React,useState,useEffect, useRef} from "react";
+import { loadcart } from "../slices/cartSlice";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 function Thankyou(){
 
+    const dispatch = useDispatch();
+    const currentDate = new Date();
+    const formattedDate = currentDate.toLocaleDateString(); // "mm/dd/yyyy"
+    const[date,setDate] = useState(formattedDate)
+    const effectRan = useRef(false);
+
+    async function createOrder(){
+
+        console.log('gets called')
+        const data = {date};
+
+        const response = await fetch('http://localhost:4000/cart/user/checkout',{
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(data),
+            credentials: 'include',
+        })
+        .then(async response => {
+            const status =  response.status;
+            if (status === 200) {
+                dispatch(loadcart())
+            } 
+            
+        })
+    }
+
+    useEffect(() => {
+        if (effectRan.current){
+            createOrder()
+        }
+        effectRan.current = true;
+        
+    }, []);
+
+
     return (
     <>
-      <div class="vh-100 d-flex justify-content-center align-items-center">
+      <div class="d-flex justify-content-center align-items-center" style= {{marginTop: '8.5%'}}>
             <div class="card col-md-4 bg-white shadow-md p-5">
                 <div class="mb-4 text-center">
                     <svg xmlns="http://www.w3.org/2000/svg" class="text-success" width="75" height="75"
@@ -23,7 +60,7 @@ function Thankyou(){
             </div>
         </div>
 
-        <div class="fill" style= {{marginTop: '8.5%'}}></div>
+        <div class="fill" style= {{marginTop: '20%'}}></div>
     </>
     )
 }
