@@ -25,6 +25,7 @@ function Thankyou(){
         .then(async response => {
             const status =  response.status;
             if (status === 200) {
+                console.log('status=',status)
                 dispatch(loadcart())
             } 
             

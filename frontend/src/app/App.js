@@ -9,6 +9,7 @@ import Login from '../components/login';
 import Cart from '../components/cart';
 import Checkout from '../components/checkout';
 import Thankyou from '../components/thankyou';
+import Profile from '../components/profile';
 
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 
@@ -25,6 +26,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route path='/cart' element={<Cart/>}/>
     <Route path='/checkout' element={<Checkout/>}/>
     <Route path='/thankyou' element={<Thankyou/>}/>
+    <Route path='/profile' element={<Profile/>}/>
   </Route>
   
 ))

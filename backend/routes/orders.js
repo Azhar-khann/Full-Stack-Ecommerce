@@ -7,10 +7,11 @@ const helper = require('../utils/helper_functions')
 module.exports = ordersRouter;
 
 // get users order
-ordersRouter.get('/user/:user_id' , (req, res) => {
+ordersRouter.get('/user' , (req, res) => {
 
-    const user_id  = req.params.user_id;
-    const query  = `select orders.order_id, name,size,price,image,date from 
+    const user_id  = req.user.id;
+    console.log(user_id)
+    const query  = `select orders.order_id, name,size,price,order_details.quantity,image_path,date from 
     orders
     join order_details
     on orders.user_id = order_details.user_id and orders.order_id = order_details.order_id
@@ -18,12 +19,13 @@ ordersRouter.get('/user/:user_id' , (req, res) => {
     on order_details.product_size_id = product_sizes.id 
     join products
     on  product_sizes.product_id = products.id 
-    where orders.user_id = $1
-`
+    where orders.user_id = $1`
+
     pool.query(query, [user_id], (error, results) => {
 
         if (error) {
-          res.status(500).json({ error: 'Internal Server Error' });
+            console.log(error)
+            return res.status(500).json({ error: 'Internal Server Error' });
         }
 
         if (results.rowCount === 0) {

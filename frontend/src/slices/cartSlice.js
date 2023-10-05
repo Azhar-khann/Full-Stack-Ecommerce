@@ -38,6 +38,7 @@ export const cartSlice = createSlice({
 
         [loadcart.rejected]: (state, action) => {
             console.log('failed')
+            state.cartItems = [];
             state.isLoading = false;
             state.hasError = true;
         }

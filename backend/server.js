@@ -180,7 +180,6 @@ app.get('/loggedInUserInfo', (req, res) => {
 app.post("/api/create-checkout-session",async(req,res)=>{
   const {products} = req.body;
 
-
   const lineItems = products.map((product)=>({
       price_data:{
           currency:"usd",

@@ -61,3 +61,15 @@ export async function getUserCart(){
     })
     return response
 }
+
+
+export async function getUserOrders(){
+    const response = await fetch(`${API_ENDPOINT}/order/user`,{
+        credentials: 'include'
+    })
+    .then(async response =>{
+        const data =  await response.json();
+        return data
+    })
+    return response
+}
