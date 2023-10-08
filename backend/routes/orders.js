@@ -10,7 +10,6 @@ module.exports = ordersRouter;
 ordersRouter.get('/user' , (req, res) => {
 
     const user_id  = req.user.id;
-    console.log(user_id)
     const query  = `select orders.order_id, name,size,price,order_details.quantity,image_path,date from 
     orders
     join order_details

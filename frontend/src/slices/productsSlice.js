@@ -47,5 +47,5 @@ export const ProductsSlice = createSlice({
 
 export const selectdata = (state) => state.products.products;
 
-export const isLoadingData = (state) => state.banner.isLoading;
+export const isLoadingData = (state) => state.products.isLoading;
 export default ProductsSlice.reducer;

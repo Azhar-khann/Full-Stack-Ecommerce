@@ -10,6 +10,7 @@ import Cart from '../components/cart';
 import Checkout from '../components/checkout';
 import Thankyou from '../components/thankyou';
 import Profile from '../components/profile';
+import Iconic from '../components/iconic';
 
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 
@@ -20,6 +21,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route path="/category/:name/products" element={<Products/>}/>
     <Route path="/brand/:name/products" element={<Products/>}/>
     <Route path="/gender/:name/products" element={<Products/>}/>
+    <Route path='/iconic' element={<Iconic/>}/>
     <Route path='/product/:ProductId' element={<Productdetails/>}/>
     <Route path='/register' element={<Register/>}/>
     <Route path='/login' element={<Login/>}/>
@@ -27,6 +29,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route path='/checkout' element={<Checkout/>}/>
     <Route path='/thankyou' element={<Thankyou/>}/>
     <Route path='/profile' element={<Profile/>}/>
+
   </Route>
   
 ))

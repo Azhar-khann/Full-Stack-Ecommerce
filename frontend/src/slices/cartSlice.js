@@ -31,7 +31,6 @@ export const cartSlice = createSlice({
         [loadcart.fulfilled]: (state, action) => {
             console.log('fulfiled')           
             state.cartItems = action.payload;
-            console.log('state=',state.cartItems)
             state.isLoading = false;
             state.hasError = false;
         },

@@ -35,7 +35,7 @@ function Products() {
                 {products.map(product => {
                     console.log(product)
                     return (
-                        <div className="col-3 product">
+                        <div className="col-lg-3 col-md-4 col-6 product">
                             <Link to={`/product/${product.id}`}> <img src={process.env.PUBLIC_URL + product.image_path} className="img-fluid" alt="..."/> </Link>
                             <Link to={`/product/${product.id}`} className="product_name">{product.brand} {product.name}</Link>
                             <span>${product.price}</span>

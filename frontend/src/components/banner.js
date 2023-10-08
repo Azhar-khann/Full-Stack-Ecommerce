@@ -1,6 +1,7 @@
 import {React,useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadbannerProduct,selectdata } from "../slices/bannerSlice";
+import { Link } from "react-router-dom";
 
 
 function Banner() {
@@ -17,13 +18,13 @@ function Banner() {
     return(
         <div className="row head">
             
-            <div className="taglines col-5 my-auto">
-                <h1>Shop sneakers</h1>
-                <p>Shop for the collest sneekers this autumn <br/> at the best available prices</p>
-                <a className="btn btn-outline-dark" href="#">View collection</a>
+            <div className="taglines col-md-5 mt-5 my-md-auto">
+                <h1>Unleash Your Style</h1>
+                <p>Elevate your look with the<br/> new Nike Court Royale collection.</p>
+                <Link to={`product/${bannerProduct.id}`} className="btn btn-outline-dark text-decoration-none text-center" href="#">Buy now</Link>
             </div>
 
-            <div className="col-7 my-auto">
+            <div className="col-md-7 my-auto">
                 <img src={process.env.PUBLIC_URL + '/images/banner.jpg'} className ="img-fluid" alt="..."/>
             </div>
 

@@ -11,7 +11,6 @@ function Nav() {
   const dispatch = useDispatch();
   const {LoggedIn,firstname} = useSelector(selectstatus);
   const cartItems = useSelector(selectdata).length
-  console.log(cartItems)
   const [vibrate, setVibrate] = useState(false);
   const [loginStatusFinished, setLoginStatusFinished] = useState(false);
 
@@ -46,7 +45,7 @@ function Nav() {
 
             <div className="container-fluid ">
     
-              <a className="navbar-brand" href="#">StockX</a>
+              <Link to={'/'} className="navbar-brand">StockX</Link>
                   <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                       <span className="navbar-toggler-icon"></span>
                    </button>

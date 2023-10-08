@@ -38,7 +38,7 @@ function Profile(){
 
         <div class="row justify-content-center orders_row">
 
-            <div class="col-6 ">
+            <div class="col-xxl-6 col-xl-7 col-lg-9 col-md-10 col-sm-11">
 
                 <table class="table table-borderless my-3 align-middle">
 
@@ -47,7 +47,7 @@ function Profile(){
                             <th scope="col">Order #</th>
                             <th scope="col">Date</th>
                             <th scope="col">Total</th>
-                            <th scope="col">Action</th>
+                            <th scope="col" id="action">Action</th>
                         </tr>
                     </thead>
 
@@ -77,65 +77,16 @@ function Profile(){
         
 
         <div class="row justify-content-center my-5">
-            <div class="col-3">
-                <a class="btn btn-outline-dark px-5 border-1 text-decoration-none login_btn" type="submit" href="#">Log out</a>
+            <div class="col-lg-3 col-md-4">
+                <a class="btn btn-outline-dark px-4 border-1 text-decoration-none logout_btn"  href="http://localhost:4000/logout">Log out</a>
             </div>
         </div>
 
         { orders.length === 0 && <div class="fill" style= {{marginTop: '18%'}}></div>}
         { orders.length === 1 && <div class="fill" style= {{marginTop: '13.6%'}}></div>}
-        { orders.length >= 2 && <div class="fill" style= {{marginTop: ' 9.5%'}}></div>}
+        { orders.length === 2 && <div class="fill" style= {{marginTop: ' 9.5%'}}></div>}
+        { orders.length > 2 && <div class="fill" style= {{marginTop: ' 0%'}}></div>}
 
-
-        {/* <div class="modal fade" id="orderDetailsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-fullscreen-lg-down modal-dialog-centered modal-dialog-scrollable modal-lg custom-modal-width">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Order Details</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-
-                    <div class="modal-body">
-                        <table class="table">
-
-                            <thead>
-                                <tr>
-                                    <th scope="col">Item</th>
-                                    <th scope="col-1">Price</th>
-                                <th scope="col">Quantity</th>
-                                <th scope="col">Total</th>
-                                </tr>
-                            </thead>
-
-                            <tbody id="orderItems">
-
-                               {orders.length > 0 && orders[0].items && orders[0].items.map(item => {
-                                    {console.log('item=',item)}
-                                    return (
-                                    <tr style={{verticalAlign: 'middle'}}>
-                                        <td style={{width: '30%'}}>
-                                            <div class="d-flex align-items-center">
-                                                <img src={process.env.PUBLIC_URL + item.image_path} className="img-fluid" style={{ width: '50%', marginRight: '4%' }} alt="..." />
-                                                <div>
-                                                    <h5 style={{ fontSize: 'small' }}>{item.name}</h5>
-                                                    <h6 style={{ fontSize: 'small' }}>Size {item.size}</h6>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td> ${item.price} </td>
-                                        <td>  {item.quantity} </td>
-                                        <td>  ${Total(item.price,item.quantity)} </td>
-                                    </tr>
-                                    )
-                                })} 
-
-                            </tbody>
-
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div> */}
     </>
     )
 }

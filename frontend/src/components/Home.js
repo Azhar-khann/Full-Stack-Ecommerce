@@ -29,9 +29,9 @@ function Home() {
 
             {featuredProducts.map(product => {
                 return (
-                <div className="col">
+                <div className="col-lg-3 col-6 product">
                     <Link to={`product/${product.id}`}> <img src={process.env.PUBLIC_URL + product.image_path} className="img-fluid" alt="..."/> </Link>
-                    <h3>{product.brand} {product.name}</h3>
+                    <h3 className="my-md-3 my-4">{product.brand} {product.name}</h3>
                 </div>
                 )}
             )}
@@ -44,14 +44,14 @@ function Home() {
             <h1>Step into Style:</h1>
             <h4>Men's and Women's Shoe Collection</h4>
 
-            <div className="col-4 offset-2">
+            <div className="col-lg-4 col-5 offset-lg-2 offset-1 column">
                 <img src={process.env.PUBLIC_URL + gender[0].image_path}  className="img-fluid" alt="..."/>
-                <Link to={'/gender/men/products'} className="btn btn-outline-dark text-decoration-none" href="category.html">Shop Men</Link>
+                <Link to={'/gender/men/products'} className="btn btn-outline-dark text-decoration-none gender" href="category.html">Shop Men</Link>
             </div>
 
-            <div className="col-4">
+            <div className="col-lg-4 col-5 column">
                 <img src={process.env.PUBLIC_URL + gender[1].image_path}  className="img-fluid" alt="..."/>
-                <Link to={'/gender/women/products'} className="btn btn-outline-dark text-decoration-none" href="category.html">Shop Women</Link>
+                <Link to={'/gender/women/products'} className="btn btn-outline-dark text-decoration-none gender" href="category.html">Shop Women</Link>
             </div>
 
         </div>
@@ -66,7 +66,7 @@ function Home() {
 
             {everydaySneakers.map(product => {
                 return (
-                <div className="col">
+                <div className="col-lg-3 col-6">
                     <Link to={`product/${product.id}`}> <img src={process.env.PUBLIC_URL + product.image_path} className="img-fluid" alt="..."/> </Link>
                     <h3>{product.brand} {product.name}</h3>
                 </div>
@@ -85,7 +85,7 @@ function Home() {
 
             {forRunners.map(product => {
                 return (
-                <div className="col">
+                <div className="col-lg-3 col-6">
                     <Link to={`product/${product.id}`}> <img src={process.env.PUBLIC_URL + product.image_path} className="img-fluid" alt="..."/> </Link>
                     <h3>{product.brand} {product.name}</h3>
                 </div>
@@ -98,7 +98,7 @@ function Home() {
             <h1>
                 Always Iconic
             </h1>
-            <div className="col-6 offset-3">
+            <div className="col-md-6  col-12 offset-md-3">
                 <h5>Each step in a pair of these legendary footwear feels like a stride through the annals of style. Their design, a testament to 
                     innovation and craftsmanship, has left an indelible mark on culture.
                 </h5>
@@ -108,7 +108,7 @@ function Home() {
             </div>
 
             <div className="col text-center">
-                <a className="btn btn-outline-dark text-decoration-none" href="category.html">View collection</a>
+                <Link to={'/iconic'} className="btn btn-outline-dark text-decoration-none" >View collection</Link>
             </div>
             
         </div>

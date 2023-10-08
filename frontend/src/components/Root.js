@@ -6,7 +6,7 @@ import { Outlet } from "react-router-dom";
 
 function Root() {
   return (
-    <div class = "container-fluid">
+    <div class = "container-fluid" style= {{minHeight: '100vh'}}>
         <Nav/>
           
           <Outlet/>

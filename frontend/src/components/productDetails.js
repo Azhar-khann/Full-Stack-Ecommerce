@@ -52,15 +52,15 @@ function Productdetails() {
         <div class="row product_detail">
             
 
-            <div class="col-6 image">
+            <div class="col-md-6 col-12 my-3 image">
                 <img src={product && process.env.PUBLIC_URL + product.image_path} class="img-fluid" alt="..."/>
             </div>
             
 
 
-            <div class="col-5 mx-3 my-5">
+            <div class="col-md-5 col-12 mx-3 my-xl-5 my-4">
 
-                <h1 class="mb-4">{product && product.name}</h1>
+                <h1 class="mb-4 product_name_d">{product.brand} {product && product.name}</h1>
 
                 <div class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-sm-between mb-4">
                     <ul class="list-inline mb-2 mb-sm-0">
@@ -73,9 +73,9 @@ function Productdetails() {
                 <form onSubmit={handleSubmit}>
 
                     <div class="row">
-                        <div class="col-sm-6 col-lg-12 detail-option mb-3">
+                        <div class=" col-lg-12 detail-option mb-3">
 
-                            <h6 class="detail-option-heading mb-4">Size <span>(required)</span></h6>
+                            <h6 class="detail-option-heading mb-4 size">Size <span>(required)</span></h6>
 
                             {Object.keys(product).length > 0 && Object.keys(product.product_size_ids).map(size => (
                                 <label class="btn btn-sm btn-outline-secondary detail-option-btn-label mb-3 mx-2 p-2" for={size}> {size} 
@@ -111,28 +111,28 @@ function Productdetails() {
                 <h3>StockX guranntee</h3>
             </div>
 
-            <div class="col mx-4">
+            <div class="col-lg mx-md-4 px-5">
                 <h5>Confidence in Every Step.</h5>
                     <p> We understand the value of a genuine product. At StockX, we guarantee the quality and authenticity <br/>  of every pair of shoes we sell.
                         In the rare event that any concerns arise, our dedicated team is here <br/>  to assist you.
                     </p> 
             </div>
 
-        <div class="col mx-3">
-          <h5>Safe and Swift Delivery.</h5>
-          <p>Your order is handled with utmost care, ensuring it reaches you in pristine condition. 
-              From the moment you <br/> confirm your purchase to the day it arrives at your doorstep, we keep you informed and guarantee a <br/>  timely delivery.
-          </p>
+            <div class="col-lg  mx-md-3 px-5">
+            <h5>Safe and Swift Delivery.</h5>
+            <p>Your order is handled with utmost care, ensuring it reaches you in pristine condition. 
+                From the moment you <br/> confirm your purchase to the day it arrives at your doorstep, we keep you informed and guarantee a <br/>  timely delivery.
+            </p>
 
-        </div>
+            </div>
 
-        <div class="col mx-3">
-          <h5>Customer Delight.</h5>
-          <p>
-            We take pride in providing a seamless shopping experience. <br/>  With a 90-day, hassle-free return policy  and a team of friendly experts at your disposal, 
-            we're here to make sure you're delighted with every <br/>  purchase.
-          </p>
-        </div>
+            <div class="col-lg mx-md-3 px-5">
+            <h5>Customer Delight.</h5>
+            <p>
+                We take pride in providing a seamless shopping experience. <br/>  With a 90-day, hassle-free return policy  and a team of friendly experts at your disposal, 
+                we're here to make sure you're delighted with every <br/>  purchase.
+            </p>
+            </div>
 
 
         </div>

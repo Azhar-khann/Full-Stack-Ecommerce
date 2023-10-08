@@ -3,9 +3,6 @@ import { Total } from "../util/helperfunc";
 
 function OrderDetails(props){
 
-    console.log('props=',props.orderItems)
-
-    
 
     return(
     <>
@@ -32,7 +29,7 @@ function OrderDetails(props){
                             <tbody id="orderItems">
 
                                 {props.orderItems.map(item => {
-                                    {console.log('item=',item)}
+
                                     return (
                                     <tr style={{verticalAlign: 'middle'}}>
                                         <td style={{width: '30%'}}>

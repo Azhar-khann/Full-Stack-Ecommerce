@@ -1,11 +1,11 @@
-import { getFeaturedProducts } from "../api/serverCalls";
+import { getProducts } from "../api/serverCalls";
 const { createAsyncThunk, createSlice } =  require("@reduxjs/toolkit");
 
 
 export const loadHomeProducts = createAsyncThunk(
     'home/getData',
     async (type) => {
-        const products = await getFeaturedProducts();
+        const products = await getProducts();
         return products
     }
 ) 

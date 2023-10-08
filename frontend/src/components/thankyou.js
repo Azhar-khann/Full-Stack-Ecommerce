@@ -13,7 +13,6 @@ function Thankyou(){
 
     async function createOrder(){
 
-        console.log('gets called')
         const data = {date};
 
         const response = await fetch('http://localhost:4000/cart/user/checkout',{
@@ -25,7 +24,6 @@ function Thankyou(){
         .then(async response => {
             const status =  response.status;
             if (status === 200) {
-                console.log('status=',status)
                 dispatch(loadcart())
             } 
             

@@ -4,7 +4,7 @@ const featuredIds = [5, 9, 11, 15];
 const genderIds = [1,10]
 const everydaySneakersIds = [5,1,13,12];
 const forRunnersIds = [10,9,15,3];
-
+const iconicCollectionIds = [6,7,8,12,11,15]
 
 
 export async function getProductbyId(id) {
@@ -16,7 +16,7 @@ export async function getProductbyId(id) {
     return response
 }
 
-export async function getFeaturedProducts() {
+export async function getProducts() {
     const response = await fetch(`${API_ENDPOINT}/products`)
     .then(async response =>{
         const data =  await response.json();
@@ -27,6 +27,17 @@ export async function getFeaturedProducts() {
         const forRunnersProducts = data.filter(product => forRunnersIds.includes(product.id));
 
         return {featuredProducts,gender,everydaySneakersProducts,forRunnersProducts}
+    })
+    return response
+}
+
+export async function getIconicCollections(){
+    const response = await fetch(`${API_ENDPOINT}/products`)
+    .then(async response =>{
+        const data =  await response.json();
+
+        const iconicProducts = data.filter(product => iconicCollectionIds.includes(product.id));
+        return iconicProducts
     })
     return response
 }

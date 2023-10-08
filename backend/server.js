@@ -175,6 +175,14 @@ app.get('/loggedInUserInfo', (req, res) => {
   }
 })
 
+app.get('/logout', (req, res) => {
+  req.logout((err) => {
+    if(err) {
+      return res.send(err);
+    }
+    res.redirect('http://localhost:3000');
+  });
+});
 
 // checkout api
 app.post("/api/create-checkout-session",async(req,res)=>{
