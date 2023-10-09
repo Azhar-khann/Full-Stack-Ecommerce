@@ -33,7 +33,7 @@ app.use(
     secret: "D53gxl41G",
     resave: false,
     saveUninitialized: false,
-    cookie: { maxAge: 300000000, secure: false, domain: 'localhost', path: '/',secure: false },
+    cookie: { maxAge: 300000000, secure: false, domain: 'localhost', path: '/' },
     store,
   })
 );

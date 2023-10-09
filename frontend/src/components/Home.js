@@ -66,7 +66,7 @@ function Home() {
 
             {everydaySneakers.map(product => {
                 return (
-                <div className="col-lg-3 col-6">
+                <div className="col-lg-3 col-6 product">
                     <Link to={`product/${product.id}`}> <img src={process.env.PUBLIC_URL + product.image_path} className="img-fluid" alt="..."/> </Link>
                     <h3>{product.brand} {product.name}</h3>
                 </div>
@@ -85,7 +85,7 @@ function Home() {
 
             {forRunners.map(product => {
                 return (
-                <div className="col-lg-3 col-6">
+                <div className="col-lg-3 col-6 product">
                     <Link to={`product/${product.id}`}> <img src={process.env.PUBLIC_URL + product.image_path} className="img-fluid" alt="..."/> </Link>
                     <h3>{product.brand} {product.name}</h3>
                 </div>

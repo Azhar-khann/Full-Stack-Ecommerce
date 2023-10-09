@@ -32,7 +32,7 @@ function OrderDetails(props){
 
                                     return (
                                     <tr style={{verticalAlign: 'middle'}}>
-                                        <td style={{width: '30%'}}>
+                                        <td id="item-col">
                                             <div class="d-flex align-items-center">
                                                 <img src={process.env.PUBLIC_URL + item.image_path} className="img-fluid" style={{ width: '50%', marginRight: '4%' }} alt="..." />
                                                 <div>

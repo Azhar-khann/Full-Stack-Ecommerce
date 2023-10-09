@@ -4,7 +4,7 @@ const { createAsyncThunk, createSlice } =  require("@reduxjs/toolkit");
 
 
 export const loadIconic = createAsyncThunk(
-    'products/getData',
+    'iconicProducts/getData',
     async () => {
         const products = await getIconicCollections();
         return products

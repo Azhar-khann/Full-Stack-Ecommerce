@@ -40,7 +40,7 @@ function Register(){
         })
         .catch(error => {
             console.error(error);
-            setError('An error has occurred. Please try again');
+            setError('An error has occurred. Please try different username');
         })
     } 
 
@@ -57,35 +57,31 @@ function Register(){
 
             <div class="col-5 register">
 
-                <p class="fw-light">Already have an account? <Link to={'/login'}> Login </Link> </p> 
+                <p class="fw-light">Already have an account?<br></br> <Link to={'/login'}> Login </Link> </p> 
 
-                <p class="fw-light">Sign in with:</p>
-
-                <div class="mb-4 text-center facebook">
-                    <a class="btn btn-outline-dark text-decoration-none" href="category.html">Register with facebook</a>
-                </div>
+                
 
                 <form onSubmit={handlesumbit}>
 
                     <div class="form-outline mb-4">
                         <label class="form-label" for="registerName">first Name</label>
-                        <input type="text" id="registerName" class="form-control" value={firstName} onChange={(e) => setfirstName(e.target.value)}/>
+                        <input type="text" required id="registerName" class="form-control" value={firstName} onChange={(e) => setfirstName(e.target.value)}/>
                     </div>
 
                     <div class="form-outline mb-4">
                         <label class="form-label" for="registerName">Last Name</label>
-                        <input type="text" id="registerName" class="form-control" value={lastName} onChange={(e) => setlastName(e.target.value)}/>
+                        <input type="text" required id="registerName" class="form-control" value={lastName} onChange={(e) => setlastName(e.target.value)}/>
                     </div>
                 
                     
                     <div class="form-outline mb-4">
                         <label class="form-label" for="registerUsername">Username</label>
-                        <input type="text" id="registerUsername" class="form-control" value={username} onChange={(e) => setusername(e.target.value)}/>                      
+                        <input type="text" required id="registerUsername" class="form-control" value={username} onChange={(e) => setusername(e.target.value)}/>                      
                     </div>
 
                     <div class="form-outline mb-4">
                         <label class="form-label" for="registerUsername">Password</label>
-                        <input type="text" id="registerPassword" class="form-control" value={password} onChange={(e) => setpassword(e.target.value)}/>                       
+                        <input type="password" required  id="registerPassword" class="form-control" value={password} onChange={(e) => setpassword(e.target.value)}/>                       
                     </div>
 
                     <span style={{ color: 'red', marginBottom: '2%', marginLeft:'10%', display:'block' }}>{error}</span>

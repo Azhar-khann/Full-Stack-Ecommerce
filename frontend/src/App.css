@@ -35,6 +35,26 @@
 }
 
 
+.intro{
+  animation-name: reveal;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+/* Define the animation keyframes */
+@keyframes reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
 .head {
   background-color: whitesmoke;
 }
@@ -425,6 +445,10 @@ a:active {
   margin-bottom: 1%;
 }
 
+#item-col{
+  width:30%;
+}
+
 .view_btn{
   border-radius: 0px;
   font-size: 13px;
@@ -610,6 +634,10 @@ a:active {
   }
   .view_btn {
     font-size: 10px;
+  }
+
+  #item-col{
+    width:50%;
   }
 }
 

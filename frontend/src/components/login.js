@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import { loginstatus } from "../slices/loginstatus";
 import { loadcart } from "../slices/cartSlice";
-
+import { Link } from "react-router-dom";
 
 function Login(){
 
@@ -55,7 +55,7 @@ function Login(){
 
             <div class="col-5 login">
 
-                <p class="fw-light">Don't have have an account? <a href="#"> Register </a> </p> 
+                <p class="fw-light">Don't have have an account? <Link to={'/register'}> Register </Link> </p> 
 
 
                 <div class="mb-4 text-center facebook">
@@ -66,12 +66,12 @@ function Login(){
                                     
                     <div class="form-outline mb-4">
                         <label class="form-label" for="loginUsername">Username</label>
-                        <input type="text" id="loginUsername" class="form-control" value={username} onChange={(e) => setusername(e.target.value)}/>                      
+                        <input type="text" required id="loginUsername" class="form-control" value={username} onChange={(e) => setusername(e.target.value)}/>                      
                     </div>
 
                     <div class="form-outline mb-4">
                         <label class="form-label" for="loginUsername">Password</label>
-                        <input type="text" id="loginUsername" class="form-control" value={password} onChange={(e) => setpassword(e.target.value)}/>                       
+                        <input type="password" required id="loginUsername" class="form-control" value={password} onChange={(e) => setpassword(e.target.value)}/>                       
                     </div>
 
                     <span style={{ color: 'red', marginBottom: '2%', marginLeft:'10%', display:'block' }}>{error}</span>

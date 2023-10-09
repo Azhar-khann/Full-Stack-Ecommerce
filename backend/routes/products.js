@@ -18,12 +18,12 @@ productsRouter.get('/' , (req, res) => {
 productsRouter.get('/:id' , (req, res) => {
 
   const id = parseInt(req.params.id)
-  const query = `SELECT products.id, brand, name, category, gender, price, quantity, image_path, description,size, product_sizes.id as product_size_ids  FROM products
+  const query = `SELECT products.id, brand, name, category, gender, price, image_path, description,size, product_sizes.id as product_size_ids  FROM products
   JOIN product_sizes ON products.id = product_sizes.product_id WHERE products.id = $1`
 
   pool.query(query, [id], (error, results) => {
     if (error) {
-      return res.status(500).send('Internal Server Error' );
+      return res.status(500).send(error );
     }
     if (results.rows.length === 0) {
       return res.status(404).send('Product not found' );

@@ -6,6 +6,7 @@ import { loadcart } from "../slices/cartSlice";
 import { selectstatus } from "../slices/loginstatus";
 
 
+
 function Productdetails() {
 
     const [product_size_id, setProduct_size_id] = useState();
@@ -79,7 +80,7 @@ function Productdetails() {
 
                             {Object.keys(product).length > 0 && Object.keys(product.product_size_ids).map(size => (
                                 <label class="btn btn-sm btn-outline-secondary detail-option-btn-label mb-3 mx-2 p-2" for={size}> {size} 
-                                    <input class="input-invisible mx-2" type="radio" name="size" value={product.product_size_ids[size]}  id={size} required="" onClick={handleSize}/>
+                                    <input class="input-invisible mx-2"  type="radio" name="size" value={product.product_size_ids[size]}  id={size} required onClick={handleSize}/>
                                 </label>
                             ))}
 
@@ -87,7 +88,7 @@ function Productdetails() {
         
                         <div class="col-12 col-lg-6 detail-option mb-5">
                             <label class="detail-option-heading fw-bold mb-2">Quantity <span>(required)</span></label>
-                            <input class="form-control detail-quantity" style={{width: '46%'}} name="num" type="number"  min={1} max={product && product.quantity} onChange={handleQuantity} value={quantity}/>
+                            <input class="form-control detail-quantity" required style={{width: '46%'}} name="num" type="number"  min={1} max={product && product.quantity} onChange={handleQuantity} value={quantity}/>
                         </div>
 
                     </div>
