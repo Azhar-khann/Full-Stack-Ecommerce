@@ -13,7 +13,7 @@ const keys = require('./keys')
 const googleStrategy = require('passport-google-oauth20');
 const stripe = require("stripe")(keys.stripe.secretKey);
 
-
+const PORT = process.env.PORT || 4000; // use either the host env var port (PORT) provided by Render or the local port (5000) on your machine
 
 app.use(express.urlencoded({ extended: false }));
 
@@ -212,6 +212,6 @@ app.post("/api/create-checkout-session",async(req,res)=>{
 })
 
 
-app.listen(4000, () => {
-  console.log('Server listening on port 4000');
+app.listen(PORT, () => {
+  console.log(`App is running on ${PORT}`);
 });

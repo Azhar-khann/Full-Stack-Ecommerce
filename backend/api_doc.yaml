@@ -129,6 +129,47 @@ paths:
                       gender: Female
                       price: 130
                       image: nike_image_url
+                      description: product description
+                      product_size_ids: {7.0 : 280, 9.0 : 282}
+        '500':
+          description: Internal Server Error
+    
+  /products/{filter}/{name}:
+    get:
+      summary: filter products based on brand,category or gender
+      tags:
+        - Products
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successfully retrieved products
+          content:
+            application/json:
+              examples:
+                products_example:
+                  value:
+                    - id: 2
+                      brand: Nike
+                      name: Zoom Pegasus 38
+                      category: Running
+                      gender: Female
+                      price: 130
+                      image_path: nike_image
+                      description: product description
+
+                    - id: 3
+                      brand: nike
+                      name: Zoom
+                      category: Running
+                      gender: Female
+                      price: 130
+                      image_path: nike_image
+                      description: product description
         '500':
           description: Internal Server Errorr
 
@@ -313,7 +354,7 @@ paths:
   
   
           
-  /cart/user/{user_id}:
+  /cart/user:
     get:
       summary: Get items in the user's cart
       tags:
@@ -333,13 +374,17 @@ paths:
                 cart_example:
                   value:
                     - name: Zoom Pegasus 38
+                      product_size_id: 270
                       size: 7.5
                       price: 130
-                      image: nike_image_url
-                    - name: Zoom Pegasus 38
+                      quantity: 1
+                      image_path: image
+                    - name: solarGlide
+                      product_size_id: 260
                       size: 8.5
                       price: 130
-                      image: nike_image_url
+                      quantity: 2
+                      image_path: imgae
         '404':
           description: Cart not found
         '500':
@@ -349,12 +394,7 @@ paths:
       summary: Add product to the user's cart
       tags:
         - Cart
-      parameters:
-        - in: path
-          name: user_id
-          required: true
-          schema:
-            type: integer
+      
       requestBody:
         required: true
         content:
@@ -363,6 +403,8 @@ paths:
               type: object
               properties:
                 product_size_id:
+                  type: integer
+                quantity:
                   type: integer
       responses:
         '200':
@@ -399,7 +441,7 @@ paths:
         '500':
           description: Internal Server Error
           
-  /cart/user/{user_id}/{product_size_id}:
+  /cart/user/{product_size_id}:
     delete:
       summary: Delete a product from the user's cart
       tags:
@@ -461,7 +503,7 @@ paths:
           
           
           
-  /orders/user/{user_id}:
+  /orders/user:
     get:
       summary: Get user's orders
       tags:
@@ -485,6 +527,7 @@ paths:
                         - name: Wool Runners
                           size: 8.0
                           price: 95
+                          quantity: 2
                           image: allbirds_image_url
                           date: "2023-09-27T19:00:00.000Z"
                     - order_id: 35
@@ -492,11 +535,13 @@ paths:
                         - name: Superstar
                           size: 9.0
                           price: 100
+                          qauntity: 1
                           image: adidas_image_url
                           date: "2023-09-27T19:00:00.000Z"
                         - name: Superstar
                           size: 9.5
                           price: 100
+                          quantity: 4
                           image: adidas_image_url
                           date: "2023-09-27T19:00:00.000Z"
         '404':

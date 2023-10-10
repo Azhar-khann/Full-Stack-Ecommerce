@@ -43,7 +43,7 @@ productsRouter.get('/:id' , (req, res) => {
 
 
 //get product based on category
-productsRouter.get('/category/:category' , (req, res) => {
+/* productsRouter.get('/category/:category' , (req, res) => {
 
   const category = req.params.category
 
@@ -56,7 +56,7 @@ productsRouter.get('/category/:category' , (req, res) => {
       }
       res.status(200).json(results.rows)
   })
-});
+}); */
 
 // filter products based on brand,category or gender
 productsRouter.get('/:filter/:name' , (req, res) => {
