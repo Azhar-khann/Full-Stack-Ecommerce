@@ -1,10 +1,10 @@
 import {React,useEffect,useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
-import { loadProduct,selectdata } from "../slices/productDetailsSlice";
+import { loadProduct,selectdata, isLoadingData} from "../slices/productDetailsSlice";
 import { loadcart } from "../slices/cartSlice";
 import { selectstatus } from "../slices/loginstatus";
-
+import { List } from 'react-content-loader';
 
 
 function Productdetails() {
@@ -13,6 +13,7 @@ function Productdetails() {
     const [quantity, setquantity] = useState();
     const [error, setError] = useState('')
     const {LoggedIn} = useSelector(selectstatus)
+    const isLoading = useSelector(isLoadingData);
 
     const handleSize = (e) => {
         setProduct_size_id(e.target.value);        
@@ -54,7 +55,8 @@ function Productdetails() {
             
 
             <div class="col-md-6 col-12 my-3 image">
-                <img src={product && process.env.PUBLIC_URL + product.image_path} class="img-fluid" alt="..."/>
+                {isLoading && <List style={{marginTop:'22%', marginLeft:'15%', width:'100%'}}/>}
+                {!isLoading && <img src={product && process.env.PUBLIC_URL + product.image_path} class="img-fluid" alt="..."/>}
             </div>
             
 

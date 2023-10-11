@@ -484,6 +484,11 @@ a:active {
 
 
 @media (max-width: 768px) {
+
+  .products-loading svg{
+    width:35%
+  }
+
   h1{font-size: 27px;}
   .taglines h1,
   .taglines p{
@@ -645,6 +650,10 @@ a:active {
 
 
 @media (max-width: 425px) {
+  .products-loading svg{
+    width:90%;
+    margin-left: 10%;
+  }
   .iconic .image{
     background-repeat: no-repeat;
     background-size: contain;

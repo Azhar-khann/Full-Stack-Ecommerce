@@ -1,4 +1,4 @@
-const API_ENDPOINT = 'http://localhost:4000';
+import { serverUrl } from "./serverUrl";
 
 const featuredIds = [5, 9, 11, 15];
 const genderIds = [1,10]
@@ -8,7 +8,7 @@ const iconicCollectionIds = [6,7,8,12,11,15]
 
 
 export async function getProductbyId(id) {
-    const response = await fetch(`${API_ENDPOINT}/products/${id}`)
+    const response = await fetch(`${serverUrl}/products/${id}`)
     .then(async response =>{
         const product =  await response.json();
         return product
@@ -17,7 +17,7 @@ export async function getProductbyId(id) {
 }
 
 export async function getProducts() {
-    const response = await fetch(`${API_ENDPOINT}/products`)
+    const response = await fetch(`${serverUrl}/products`)
     .then(async response =>{
         const data =  await response.json();
 
@@ -32,7 +32,7 @@ export async function getProducts() {
 }
 
 export async function getIconicCollections(){
-    const response = await fetch(`${API_ENDPOINT}/products`)
+    const response = await fetch(`${serverUrl}/products`)
     .then(async response =>{
         const data =  await response.json();
 
@@ -43,7 +43,7 @@ export async function getIconicCollections(){
 }
 
 export async function getFilterProducts(filter,name){
-    const response = await fetch(`${API_ENDPOINT}/products/${filter}/${name}`)
+    const response = await fetch(`${serverUrl}/products/${filter}/${name}`)
     .then(async response =>{
         const data =  await response.json();
         return data
@@ -52,7 +52,7 @@ export async function getFilterProducts(filter,name){
 }
 
 export async function checkLogin(){
-    const response = await fetch(`${API_ENDPOINT}/loggedInUserInfo`,{
+    const response = await fetch(`${serverUrl}/loggedInUserInfo`,{
         credentials: 'include'
     })
     .then(async response =>{
@@ -63,7 +63,7 @@ export async function checkLogin(){
 }
 
 export async function getUserCart(){
-    const response = await fetch(`${API_ENDPOINT}/cart/user`,{
+    const response = await fetch(`${serverUrl}/cart/user`,{
         credentials: 'include'
     })
     .then(async response =>{
@@ -75,7 +75,7 @@ export async function getUserCart(){
 
 
 export async function getUserOrders(){
-    const response = await fetch(`${API_ENDPOINT}/order/user`,{
+    const response = await fetch(`${serverUrl}/order/user`,{
         credentials: 'include'
     })
     .then(async response =>{

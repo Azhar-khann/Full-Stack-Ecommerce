@@ -13,7 +13,7 @@ const keys = require('./keys')
 const googleStrategy = require('passport-google-oauth20');
 const stripe = require("stripe")(keys.stripe.secretKey);
 
-const PORT = process.env.PORT || 4000; // use either the host env var port (PORT) provided by Render or the local port (5000) on your machine
+const PORT = process.env.PORT || 4000; // use either the host env var port (PORT) provided by Render or the local port (4000) on your machine
 
 app.use(express.urlencoded({ extended: false }));
 
@@ -33,7 +33,7 @@ app.use(
     secret: "D53gxl41G",
     resave: false,
     saveUninitialized: false,
-    cookie: { maxAge: 300000000, secure: false, domain: 'localhost', path: '/' },
+    cookie: { maxAge: 300000000, secure: true, domain: 'localhost', path: '/' },
     store,
   })
 );

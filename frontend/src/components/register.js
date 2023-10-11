@@ -2,7 +2,7 @@ import {React, useEffect,useState} from "react";
 import { useNavigate,Link } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import { loginstatus } from "../slices/loginstatus";
-
+import { serverUrl } from "../api/serverUrl";
 
 
 function Register(){
@@ -20,7 +20,7 @@ function Register(){
         e.preventDefault();
         const data = {firstName,lastName,username,password};
 
-        const response = await fetch('http://localhost:4000/register',{
+        const response = await fetch(`${serverUrl}/register`,{
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(data),

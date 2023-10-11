@@ -4,11 +4,12 @@ import Footer from "./footer";
 import Home from "./Home";
 import { Outlet } from "react-router-dom";
 import { ScrollRestoration } from "react-router-dom";
+import ScrollToTop from "./scrollToTop";
 
 function Root() {
-  return (
+  return (  
     <div class = "container-fluid" style= {{minHeight: '100vh'}}>
-      <ScrollRestoration/>   
+      <ScrollToTop /> 
         <Nav/>
           
           <Outlet/>
