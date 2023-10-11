@@ -18,7 +18,7 @@ const PORT = process.env.PORT || 4000; // use either the host env var port (PORT
 app.use(express.urlencoded({ extended: false }));
 
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: 'https://ecommerce-frontend-ttem.onrender.com',
   credentials: true  
 }));
 
