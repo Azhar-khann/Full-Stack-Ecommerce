@@ -33,7 +33,7 @@ app.use(
     secret: "D53gxl41G",
     resave: false,
     saveUninitialized: false,
-    cookie: { maxAge: 300000000, secure: true },
+    cookie: { maxAge: 300000000, secure: true, sameSite: "None", domain: '.mykickspro.com' },
     store,
   })
 );
