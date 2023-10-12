@@ -18,7 +18,7 @@ const PORT = process.env.PORT || 4000; // use either the host env var port (PORT
 app.use(express.urlencoded({ extended: false }));
 
 app.use(cors({
-  origin: 'https://ecommerce-frontend-ttem.onrender.com',
+  origin: 'https://www.mykickspro.store',
   credentials: true  
 }));
 
