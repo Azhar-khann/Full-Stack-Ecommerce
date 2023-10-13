@@ -16,6 +16,7 @@ const stripe = require("stripe")(keys.stripe.secretKey);
 const PORT = process.env.PORT || 4000; // use either the host env var port (PORT) provided by Render or the local port (4000) on your machine
 
 app.use(express.urlencoded({ extended: false }));
+app.set('trust proxy', 1)
 
 app.use(cors({
   origin: 'https://www.mykickspro.store',
