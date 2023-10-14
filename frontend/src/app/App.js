@@ -18,7 +18,7 @@ import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } 
 const router = createBrowserRouter(createRoutesFromElements(
 
 
-  <Route path="/" element={ <Root/> }>
+  <Route path="https://www.mykickspro.store" element={ <Root/> }>
 
     <Route index element = {<Home/>}/>
     <Route path="/category/:name/products" element={<Products/>}/>
