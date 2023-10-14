@@ -11,6 +11,7 @@ function Thankyou(){
     const formattedDate = currentDate.toLocaleDateString(); // "mm/dd/yyyy"
     const[date,setDate] = useState(formattedDate)
     const effectRan = useRef(false);
+    console.log('outside=',effectRan.current)
 
     async function createOrder(){
 
@@ -35,6 +36,7 @@ function Thankyou(){
     }
 
     useEffect(() => {
+        console.log('inside useeffect=',effectRan.current,effectRan)
         if (effectRan.current){
             createOrder()
         }
