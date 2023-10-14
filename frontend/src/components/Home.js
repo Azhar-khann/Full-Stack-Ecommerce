@@ -3,7 +3,6 @@ import { useDispatch, useSelector, } from "react-redux";
 import { loadHomeProducts,selectfeatured,selectgender,selecteverydaySneakers,selectforRunners, isLoadingData } from "../slices/homeSlice";
 import { Link } from "react-router-dom";
 import Banner from "./banner";
-import { List } from 'react-content-loader';
 
 function Home() {
 
@@ -12,7 +11,7 @@ function Home() {
     const gender = useSelector(selectgender);
     const everydaySneakers = useSelector(selecteverydaySneakers);
     const forRunners = useSelector(selectforRunners)
-    const isLoading = useSelector(isLoadingData);
+
 
 
 
@@ -32,7 +31,6 @@ function Home() {
             {featuredProducts.map(product => {
                 return (
                 <div className="col-lg-3 col-6 product">
-                    {isLoading && <List/>} 
                     <Link to={`product/${product.id}`}> <img src={process.env.PUBLIC_URL + product.image_path} className="img-fluid" alt="..."/> </Link>
                     <h3 className="my-md-3 my-4">{product.brand} {product.name}</h3>
                 </div>
