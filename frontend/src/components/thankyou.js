@@ -8,7 +8,7 @@ function Thankyou(){
 
     const dispatch = useDispatch();
     const currentDate = new Date();
-    const formattedDate = currentDate.toLocaleDateString(); // "mm/dd/yyyy"
+    const formattedDate = currentDate.toISOString().split('T')[0];
     const[date,setDate] = useState(formattedDate)
     const effectRan = useRef(false);
     console.log('outside=',effectRan.current)
@@ -18,6 +18,7 @@ function Thankyou(){
         console.log('running')
 
         const data = {date};
+        console.log('date=',date)
 
         const response = await fetch(`${serverUrl}/cart/user/checkout`,{
             method: 'POST',
