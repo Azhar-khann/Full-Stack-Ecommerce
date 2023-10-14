@@ -116,7 +116,8 @@ passport.use(new googleStrategy({
 
     pool.query('SELECT * FROM users where id = $1', [id], (error, results) => {
 
-      if (results.rowCount === 0) {
+      console.log(results)
+      if (results.rows.length === 0) {
         pool.query('INSERT INTO users (id, firstname, lastname) VALUES ($1, $2, $3)', [id, firstname,lastname])
         done(null,{id,firstname,lastname})
 
