@@ -14,6 +14,8 @@ function Thankyou(){
 
     async function createOrder(){
 
+        console.log('running')
+
         const data = {date};
 
         const response = await fetch(`${serverUrl}/cart/user/checkout`,{
@@ -25,6 +27,7 @@ function Thankyou(){
         .then(async response => {
             const status =  response.status;
             if (status === 200) {
+            
                 dispatch(loadcart())
             } 
             
