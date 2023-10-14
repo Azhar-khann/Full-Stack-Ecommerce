@@ -37,10 +37,11 @@ function Thankyou(){
 
     useEffect(() => {
         console.log('inside useeffect=',effectRan.current,effectRan)
-        if (effectRan.current){
+        /* if (effectRan.current){
             createOrder()
         }
-        effectRan.current = true;
+        effectRan.current = true; */
+        createOrder()
         
     }, []);
 
