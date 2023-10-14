@@ -5,6 +5,7 @@ import { loadProduct,selectdata, isLoadingData} from "../slices/productDetailsSl
 import { loadcart } from "../slices/cartSlice";
 import { selectstatus } from "../slices/loginstatus";
 import { List } from 'react-content-loader';
+import { serverUrl } from "../api/serverUrl";
 
 
 function Productdetails() {
@@ -25,7 +26,7 @@ function Productdetails() {
     async function handleSubmit(e) {
         e.preventDefault();
         const data = {product_size_id,quantity}
-        const response = await fetch('http://localhost:4000/cart/user',{
+        const response = await fetch(`${serverUrl}/cart/user`,{
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(data),

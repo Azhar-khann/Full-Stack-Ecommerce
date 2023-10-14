@@ -2,6 +2,7 @@ import {React,useState,useEffect, useRef} from "react";
 import { loadcart } from "../slices/cartSlice";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { serverUrl } from "../api/serverUrl";
 
 function Thankyou(){
 
@@ -15,7 +16,7 @@ function Thankyou(){
 
         const data = {date};
 
-        const response = await fetch('http://localhost:4000/cart/user/checkout',{
+        const response = await fetch(`${serverUrl}/cart/user/checkout`,{
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(data),

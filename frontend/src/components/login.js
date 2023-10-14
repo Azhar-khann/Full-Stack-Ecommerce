@@ -60,7 +60,7 @@ function Login(){
 
 
                 <div class="mb-4 text-center facebook">
-                    <a class="btn btn-outline-dark text-decoration-none" href='http://localhost:4000/google'>Login with Google</a>
+                    <a class="btn btn-outline-dark text-decoration-none" href={`${serverUrl}/google`}>Login with Google</a>
                 </div>
 
                 <form onSubmit={handlesumbit}>

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { loadcart,selectdata } from "../slices/cartSlice";
 import { Total } from "../util/helperfunc";
 import {loadStripe} from '@stripe/stripe-js';
+import { serverUrl } from "../api/serverUrl";
 
 
 function Cart(){
@@ -40,7 +41,7 @@ function Cart(){
         const headers = {
             "Content-Type":"application/json"
         }
-        const response = await fetch("http://localhost:4000/api/create-checkout-session",{
+        const response = await fetch(`${serverUrl}/api/create-checkout-session`,{
             method:"POST",
             headers:headers,
             body:JSON.stringify(body)
