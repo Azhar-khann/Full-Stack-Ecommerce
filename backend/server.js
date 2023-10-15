@@ -109,7 +109,7 @@ passport.use(new googleStrategy({
   clientSecret: keys.google.clientSecret
   },(accessToken, refreshToken, profile, done) => {
 
-    const id = profile.id
+    const id = BigInt(profile.id.toString().slice(2));
     console.log(profile)
     const firstname = profile.name.givenName;
     const lastname = profile.name.familyName;
@@ -117,7 +117,7 @@ passport.use(new googleStrategy({
     pool.query('SELECT * FROM users where id = $1', [id], (error, results) => {
 
       console.log(results)
-      if (results.rows.length === 0) {
+      if (results.rowCount === 0) {
         pool.query('INSERT INTO users (id, firstname, lastname) VALUES ($1, $2, $3)', [id, firstname,lastname])
         done(null,{id,firstname,lastname})
 
@@ -130,7 +130,7 @@ passport.use(new googleStrategy({
 ) 
 
 app.get('/google',passport.authenticate('google',{
-  scope:['profile']
+  scope:['profile','email']
 }))
 
 app.get('/google/redirect',passport.authenticate('google'), (req,res) => {

@@ -23,7 +23,7 @@ usersRouter.get('/:id' , (req, res) => {
     pool.query('SELECT * FROM users where id = $1', [id], (error, results) => {
 
         if (error) {
-          return res.status(500).json({ error: 'Internal Server Error' });
+            return res.status(500).json({ error: 'Internal Server Error' });
         }
 
         if (results.rowCount === 0) {
