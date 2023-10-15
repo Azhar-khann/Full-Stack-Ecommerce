@@ -109,16 +109,18 @@ passport.use(new googleStrategy({
   clientSecret: keys.google.clientSecret
   },(accessToken, refreshToken, profile, done) => {
 
-    const id = BigInt(profile.id.toString().slice(2));
+    //const id = profile.id;
     console.log(profile)
+    const email = profile.emails[0].value;
+    const username = email.split('@')[0];
     const firstname = profile.name.givenName;
     const lastname = profile.name.familyName;
 
-    pool.query('SELECT * FROM users where id = $1', [id], (error, results) => {
+    pool.query('SELECT * FROM users where username = $1', [username], (error, results) => {
 
       console.log(results)
       if (results.rowCount === 0) {
-        pool.query('INSERT INTO users (id, firstname, lastname) VALUES ($1, $2, $3)', [id, firstname,lastname])
+        pool.query('INSERT INTO users (username, firstname, lastname) VALUES ($1, $2, $3)', [username, firstname,lastname])
         done(null,{id,firstname,lastname})
 
       } else{
