@@ -54,13 +54,13 @@ function Login(){
 
         <div class="row justify-content-center login_row ">
 
-            <div class="col-5 login">
+            <div class="col-xl-5 col-lg-7 col-md-8 col-sm-9 col-12 login">
 
                 <p class="fw-light">Don't have have an account? <Link to={'/register'}> Register </Link> </p> 
 
 
                 <div class="mb-4 text-center facebook">
-                    <a class="btn btn-outline-dark text-decoration-none" href={`${serverUrl}/google`}>Login with Google</a>
+                    <a class="btn btn-outline-dark text-decoration-none google" href={`${serverUrl}/google`}>Login with Google</a>
                 </div>
 
                 <form onSubmit={handlesumbit}>
