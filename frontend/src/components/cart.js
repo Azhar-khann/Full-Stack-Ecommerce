@@ -19,7 +19,7 @@ function Cart(){
 
     async function handleDelete(product_size_id){
         console.log('product_size_id=',product_size_id)
-        const response = await fetch(`http://localhost:4000/cart/user/${product_size_id}`,{
+        const response = await fetch(`${serverUrl}/${product_size_id}`,{
             method: 'DELETE',
             credentials: 'include',
         })         
