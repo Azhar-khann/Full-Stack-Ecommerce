@@ -42,8 +42,10 @@ usersRouter.post('/' , (req, res) => {
     pool.query('insert into users (username,password) values($1,$2)', [username,password], (error, results) => {
 
         if (error) {
+ 
           return res.status(500).json({ error: 'Internal Server Error' });
         }
+
         res.status(200).send('user successsfully added')
     })
 });

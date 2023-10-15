@@ -120,8 +120,12 @@ passport.use(new googleStrategy({
 
       console.log(results)
       if (results.rowCount === 0) {
-        pool.query('INSERT INTO users (username, firstname, lastname) VALUES ($1, $2, $3)', [username, firstname,lastname])
-        done(null,{id,firstname,lastname})
+        pool.query('INSERT INTO users (username, firstname, lastname) VALUES ($1, $2, $3)', [username, firstname,lastname], (error, results) => {
+          console.log('results=',results)
+          console.log('results rows=',results.rows)
+          //done(null,{id,firstname,lastname})
+        })
+
 
       } else{
         done(null,results.rows[0])
