@@ -116,16 +116,16 @@ passport.use(new googleStrategy({
     const firstname = profile.name.givenName;
     const lastname = profile.name.familyName;
 
-    pool.query('SELECT * FROM users where username = $1', [username], (error, results) => {
-
-      console.log(results)
+    pool.query('SELECT * FROM users where username = $1', [username], async (error, results) => {
+      
       if (results.rowCount === 0) {
-        pool.query('INSERT INTO users (username, firstname, lastname) VALUES ($1, $2, $3)', [username, firstname,lastname], (error, results) => {
-          console.log('results=',results)
-          console.log('results rows=',results.rows)
-          //done(null,{id,firstname,lastname})
-        })
 
+        await pool.query('INSERT INTO users (username, firstname, lastname) VALUES ($1, $2, $3)', [username, firstname,lastname])
+
+        pool.query('SELECT * FROM users where username = $1', [username], (error, results) => {
+          done(null,results.rows[0])
+        })
+        
 
       } else{
         done(null,results.rows[0])
