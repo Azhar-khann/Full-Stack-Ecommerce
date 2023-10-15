@@ -112,12 +112,12 @@ function Productdetails() {
         <div class="row guranntee justify-content-evenly">
 
             <div class="col-12 text-center">
-                <h3>StockX guranntee</h3>
+                <h3>Kicks Guranntee</h3>
             </div>
 
             <div class="col-lg mx-md-4 px-5">
                 <h5>Confidence in Every Step.</h5>
-                    <p> We understand the value of a genuine product. At StockX, we guarantee the quality and authenticity <br/>  of every pair of shoes we sell.
+                    <p> We understand the value of a genuine product. At Kicks, we guarantee the quality and authenticity <br/>  of every pair of shoes we sell.
                         In the rare event that any concerns arise, our dedicated team is here <br/>  to assist you.
                     </p> 
             </div>

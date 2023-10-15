@@ -45,7 +45,7 @@ function Nav() {
 
             <div className="container-fluid ">
     
-              <Link to={'/'} className="navbar-brand">StockX</Link>
+              <Link to={'/'} className="navbar-brand">ProKicks</Link>
                   <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                       <span className="navbar-toggler-icon"></span>
                    </button>
@@ -105,7 +105,7 @@ function Nav() {
                             <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
                           </svg> <span id="userfirstname"> {firstname}</span>
                         </Link>) : 
-                        (<NavLink to={'/register'} className="nav-link" aria-current="page">
+                        (<NavLink to={'/login'} className="nav-link" aria-current="page">
                           <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-person-fill profileIcon" viewBox="0 0 16 16">
                             <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
                           </svg>
@@ -114,9 +114,15 @@ function Nav() {
                     </li>                            
 
                     <li className="nav-item py-1 ">
-                      <NavLink to={'/cart'} className="nav-link cart_icon" href="#">
-                        <i class={`fa fa-shopping-cart mt-2 ${vibrate ? 'vibrate' : ''}`} style={{ fontSize:'18px' }}> </i><span>  {cartItems}</span>
-                      </NavLink>
+                      { LoggedIn ? (
+                        <NavLink to={'/cart'} className="nav-link cart_icon" href="#">
+                          <i class={`fa fa-shopping-cart mt-2 ${vibrate ? 'vibrate' : ''}`} style={{ fontSize:'18px' }}> </i><span>  {cartItems}</span>
+                        </NavLink>) :
+
+                        (<Link to={'/login'} className="nav-link cart_icon" href="#">
+                          <i class={`fa fa-shopping-cart mt-2 ${vibrate ? 'vibrate' : ''}`} style={{ fontSize:'18px' }}> </i><span>  {cartItems}</span>
+                        </Link>)
+                      }
                     </li>
 
                   </ul>

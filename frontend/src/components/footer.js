@@ -7,7 +7,7 @@ function Footer() {
         <div className ="row footer">
             <div className="col py-md-4 py-3 text-center">
                 <span>
-                    2022 StockX. All Rights Reserved
+                    2023 Kicks. All Rights Reserved
                 </span>
             </div>
         </div>

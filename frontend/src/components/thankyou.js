@@ -50,7 +50,7 @@ function Thankyou(){
     return (
     <>
       <div class="d-flex justify-content-center align-items-center" style= {{marginTop: '8.5%'}}>
-            <div class="card col-md-4 bg-white shadow-md p-5">
+            <div class="card col-xl-4 col-lg-5 col-md-7 col-12 bg-white shadow-md p-5">
                 <div class="mb-4 text-center">
                     <svg xmlns="http://www.w3.org/2000/svg" class="text-success" width="75" height="75"
                         fill="currentColor" className="bi bi-check-circle" viewBox="0 0 16 16">

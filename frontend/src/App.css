@@ -659,4 +659,9 @@ a:active {
     background-size: contain;
     height: 186px;
   }
+
+  .register_btn {
+    font-size: 15px;
+    margin-left: 22%;
+  }
 }

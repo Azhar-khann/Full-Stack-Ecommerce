@@ -55,7 +55,7 @@ function Register(){
 
         <div class="row justify-content-center register_row ">
 
-            <div class="col-5 register">
+            <div class="col-xl-5 col-lg-7 col-md-8 col-sm-9 col-12 register">
 
                 <p class="fw-light">Already have an account?<br></br> <Link to={'/login'}> Login </Link> </p> 
 

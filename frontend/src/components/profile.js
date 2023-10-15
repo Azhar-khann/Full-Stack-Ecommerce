@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadorders,selectdata } from "../slices/orderSlice";
 import { orderValue, Total } from "../util/helperfunc";
 import OrderDetails from "./orderDetails";
-
+import { serverUrl } from "../api/serverUrl";
 
 function Profile(){
 
@@ -78,7 +78,7 @@ function Profile(){
 
         <div class="row justify-content-center my-5">
             <div class="col-lg-3 col-md-4">
-                <a class="btn btn-outline-dark px-4 border-1 text-decoration-none logout_btn"  href="http://localhost:4000/logout">Log out</a>
+                <a class="btn btn-outline-dark px-4 border-1 text-decoration-none logout_btn"  href='https://www.mykickspro.store/logout'>Log out</a>
             </div>
         </div>
 
