@@ -78,7 +78,7 @@ function Profile(){
 
         <div class="row justify-content-center my-5">
             <div class="col-lg-3 col-md-4">
-                <a class="btn btn-outline-dark px-4 border-1 text-decoration-none logout_btn"  href='https://www.mykickspro.store/logout'>Log out</a>
+                <a class="btn btn-outline-dark px-4 border-1 text-decoration-none logout_btn"  href='https://serverurl.mykickspro.store/logout'>Log out</a>
             </div>
         </div>
 

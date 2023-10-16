@@ -22,6 +22,14 @@ function Home() {
     <>
         <Banner/>
 
+        <div className="about">
+            <h1>About</h1>
+            <p>Welcome to Kicks, your go-to destination for premium footwear. Discover a curated selection from iconic brands like Nike, Adidas, and Allbirds. 
+                Whether you're an avid athlete or a fashion enthusiast, we have the perfect pair for you. Our commitment to quality ensures that every step is a stride in 
+                comfort and style. Elevate your style and comfort with every step. 
+            </p>
+        </div>
+
         <div className="row my-4 mx-3 product_line">
 
         <h1 id="featured">Featured</h1>
