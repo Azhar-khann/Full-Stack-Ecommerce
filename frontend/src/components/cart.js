@@ -55,6 +55,8 @@ function Cart(){
         
         if(result.error){
             console.log(result.error);
+        }else{
+            console.log('success happended')
         }
     }
 

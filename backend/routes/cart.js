@@ -93,8 +93,9 @@ cartRouter.delete('/user/:product_size_id' , (req, res) => {
 });
 
 
-cartRouter.post('/user/checkout', (req, res) => {
+cartRouter.get('/user/checkout', (req, res) => {
 
+    console.log('user id=',req.user.id)
     const currentDate = new Date();
     const formattedDate = currentDate.toISOString().split('T')[0];
 
