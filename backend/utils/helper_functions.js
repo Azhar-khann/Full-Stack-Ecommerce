@@ -64,7 +64,7 @@ async function createOrder(user_id,date,res) {
 
     await pool.query(deleteFromCart, [user_id])
 
-    res.redirect('https://www.mykickspro.store/')
+    res.redirect('https://www.mykickspro.store/thankyou')
 
   } catch (error) {
     throw error;
