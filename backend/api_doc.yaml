@@ -134,45 +134,6 @@ paths:
         '500':
           description: Internal Server Error
     
-  /products/{filter}/{name}:
-    get:
-      summary: filter products based on brand,category or gender
-      tags:
-        - Products
-      parameters:
-        - in: path
-          name: id
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: Successfully retrieved products
-          content:
-            application/json:
-              examples:
-                products_example:
-                  value:
-                    - id: 2
-                      brand: Nike
-                      name: Zoom Pegasus 38
-                      category: Running
-                      gender: Female
-                      price: 130
-                      image_path: nike_image
-                      description: product description
-
-                    - id: 3
-                      brand: nike
-                      name: Zoom
-                      category: Running
-                      gender: Female
-                      price: 130
-                      image_path: nike_image
-                      description: product description
-        '500':
-          description: Internal Server Errorr
-
     put:
       summary: Update a product's name, brand, category, gender,price and image by ID
       tags:
@@ -227,6 +188,40 @@ paths:
           description: Product not found
         '500':
           description: Internal Server Error
+    
+  /products/{filter}/{name}:
+    get:
+      summary: filter products based on brand,category or gender
+      tags:
+        - Products
+      responses:
+        '200':
+          description: Successfully retrieved products
+          content:
+            application/json:
+              examples:
+                products_example:
+                  value:
+                    - id: 2
+                      brand: Nike
+                      name: Zoom Pegasus 38
+                      category: Running
+                      gender: Female
+                      price: 130
+                      image_path: nike_image
+                      description: product description
+
+                    - id: 3
+                      brand: nike
+                      name: Zoom
+                      category: Running
+                      gender: Female
+                      price: 130
+                      image_path: nike_image
+                      description: product description
+        '500':
+          description: Internal Server Errorr
+  
           
           
   
@@ -359,12 +354,7 @@ paths:
       summary: Get items in the user's cart
       tags:
         - Cart
-      parameters:
-        - in: path
-          name: user_id
-          required: true
-          schema:
-            type: integer
+      
       responses:
         '200':
           description: Successfully retrieved items in the cart
@@ -466,33 +456,11 @@ paths:
           description: Internal Server Error
 
   /cart/user/checkout/{user_id}:
-    post:
-      summary: Checkout the user's cart
+    get:
+      summary: Checkout the user's cart and add items in users orders
       tags:
         - Cart
-      parameters:
-        - in: path
-          name: user_id
-          required: true
-          schema:
-            type: integer
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                date:
-                  type: string
-                cardNumber:
-                  type: string
-                expirationMonth:
-                  type: string
-                expirationYear:
-                  type: string
-                cvv:
-                  type: string
+      
       responses:
         '200':
           description: Cart checked out successfully
@@ -508,12 +476,7 @@ paths:
       summary: Get user's orders
       tags:
         - Orders
-      parameters:
-        - in: path
-          name: user_id
-          required: true
-          schema:
-            type: integer
+
       responses:
         '200':
           description: Successfully retrieved user's orders

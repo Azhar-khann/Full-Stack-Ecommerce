@@ -20,7 +20,7 @@ function Banner() {
             
             <div className="taglines col-md-5 mt-5 my-md-auto intro">
                 <h1>Unleash Your Style</h1>
-                <p>Elevate your look with the<br/> all new Nike Court Royale.</p>
+                <p>Elevate your look with the<br/> new Nike Court Royale.</p>
                 <Link to={`product/${bannerProduct.id}`} className="btn btn-outline-dark text-decoration-none text-center" href="#">Buy now</Link>
             </div>
 
