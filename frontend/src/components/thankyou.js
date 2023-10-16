@@ -27,8 +27,8 @@ function Thankyou(){
                 </div>
                 <div class="text-center">
                     <h1>Thank You !</h1>
-                    <p>Your order has been placed Successfully. Thanks you for choosing StockX. </p>
-                    <Link to={'/'} class="btn btn-outline-dark text-decoration-none">Back Home</Link>
+                    <p>Your order has been placed Successfully. Thank you for choosing Kicks. </p>
+                    <Link to={'/profile'} class="btn btn-outline-dark text-decoration-none">Your Orders</Link>
                 </div>
             </div>
         </div>

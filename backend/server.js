@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const session = require("express-session");
@@ -9,9 +10,8 @@ const {passwordHash} = require('./utils/helper_functions');
 const swaggerUi = require('swagger-ui-express');
 const swaggerSpec = require('./swagger');
 const cors = require('cors');
-const keys = require('./keys')
 const googleStrategy = require('passport-google-oauth20');
-const stripe = require("stripe")(keys.stripe.secretKey);
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 const PORT = process.env.PORT || 4000; // use either the host env var port (PORT) provided by Render or the local port (4000) on your machine
 
@@ -31,7 +31,7 @@ const store = new session.MemoryStore();
 
 app.use(
   session({
-    secret: "D53gxl41G",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: { maxAge: 1000 * 60 * 60 * 48, secure: process.env.SECURE = 'production', sameSite: 'None'},
@@ -105,8 +105,8 @@ passport.use(new LocalStrategy(
 
 passport.use(new googleStrategy({
   callbackURL: '/google/redirect',
-  clientID: keys.google.cliendId,
-  clientSecret: keys.google.clientSecret
+  clientID: process.env.GOOGLE_CLIENT_ID,
+  clientSecret: process.env.GOOGLE_CLIENT_SECRET
   },(accessToken, refreshToken, profile, done) => {
 
     //const id = profile.id;
