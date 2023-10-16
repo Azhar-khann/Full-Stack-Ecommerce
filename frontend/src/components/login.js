@@ -1,16 +1,18 @@
-import {React,useState} from "react";
+import {React,useState,useEffect} from "react";
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from "react-redux";
-import { loginstatus } from "../slices/loginstatus";
+import { loginstatus,selectstatus } from "../slices/loginstatus";
 import { loadcart } from "../slices/cartSlice";
 import { Link } from "react-router-dom";
 import { serverUrl } from "../api/serverUrl";
+import { useSelector } from "react-redux";
 
 function Login(){
 
     const dispatch = useDispatch();
     const [username, setusername] = useState();
     const [password, setpassword] = useState();
+    const {LoggedIn} = useSelector(selectstatus);
     
     const [error, setError] = useState('')
     const navigate = useNavigate();
@@ -42,6 +44,12 @@ function Login(){
         })
     } 
 
+    useEffect(() =>{
+        console.log(LoggedIn)
+        if (LoggedIn){
+            navigate('/')
+        }
+    },[LoggedIn])
 
     return (
     <>
