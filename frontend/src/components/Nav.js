@@ -14,6 +14,7 @@ function Nav() {
   const [vibrate, setVibrate] = useState(false);
   const [loginStatusFinished, setLoginStatusFinished] = useState(false);
 
+// the following two useffects is to get login status but also makes sure to get cart items only if the user is logged in
   useEffect(() => {
     dispatch(loginstatus())
       .then(() => {

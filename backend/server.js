@@ -34,7 +34,7 @@ app.use(
     secret: "D53gxl41G",
     resave: false,
     saveUninitialized: false,
-    cookie: { maxAge: 1000 * 60 * 60 * 48, secure: true},
+    cookie: { maxAge: 1000 * 60 * 60 * 48, secure: process.env.SECURE = 'production', sameSite: 'None'},
     store,
   })
 );

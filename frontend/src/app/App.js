@@ -10,6 +10,7 @@ import Cart from '../components/cart';
 import Thankyou from '../components/thankyou';
 import Profile from '../components/profile';
 import Iconic from '../components/iconic';
+import Protected from '../components/protected';
 
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 
@@ -28,9 +29,9 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route path='/product/:ProductId' element={<Productdetails/>}/>
     <Route path='/register' element={<Register/>}/>
     <Route path='/login' element={<Login/>}/>
-    <Route path='/cart' element={<Cart/>}/>
+    <Route path='/cart' element={<Protected Component = {Cart}/>}/>
     <Route path='/thankyou' element={<Thankyou/>}/>
-    <Route path='/profile' element={<Profile/>}/>
+    <Route path='/profile' element={<Protected Component = {Profile}/>}/>
 
   </Route>
   
