@@ -95,7 +95,8 @@ cartRouter.delete('/user/:product_size_id' , (req, res) => {
 
 cartRouter.post('/user/checkout', (req, res) => {
 
-    const {date} = req.body;
+    const currentDate = new Date();
+    const formattedDate = currentDate.toISOString().split('T')[0];
 
     pool.query(query, [req.user.id], (error, results) => {
 
@@ -103,7 +104,7 @@ cartRouter.post('/user/checkout', (req, res) => {
             return res.status(404).send( 'no items in cart' );
         }
         else {
-            return createOrder(req.user.id,date,res);          
+            return createOrder(req.user.id,formattedDate,res);          
         }
 
     })

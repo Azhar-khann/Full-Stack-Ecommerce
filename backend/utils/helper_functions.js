@@ -64,7 +64,7 @@ async function createOrder(user_id,date,res) {
 
     await pool.query(deleteFromCart, [user_id])
 
-    return res.status(200).send( 'Checkout successfull. Order successfully added in user account' );
+    res.redirect('https://www.mykickspro.store/')
 
   } catch (error) {
     throw error;

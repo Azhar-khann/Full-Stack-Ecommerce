@@ -211,7 +211,7 @@ app.post("/api/create-checkout-session",async(req,res)=>{
       payment_method_types:["card"],
       line_items:lineItems,
       mode:"payment",
-      success_url:"https://www.mykickspro.store/thankyou",
+      success_url:"https://serverurl.mykickspro.store/cart/user/checkout",
       cancel_url:"https://www.mykickspro.store/cart",
   });
 

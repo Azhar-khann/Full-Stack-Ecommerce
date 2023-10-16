@@ -10,41 +10,7 @@ function Thankyou(){
     const currentDate = new Date();
     const formattedDate = currentDate.toISOString().split('T')[0];
     const[date,setDate] = useState(formattedDate)
-    const effectRan = useRef(false);
-    console.log('outside=',effectRan.current)
 
-    async function createOrder(){
-
-        console.log('running')
-
-        const data = {date};
-        console.log('date=',date)
-
-        const response = await fetch(`${serverUrl}/cart/user/checkout`,{
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(data),
-            credentials: 'include',
-        })
-        .then(async response => {
-            const status =  response.status;
-            if (status === 200) {
-            
-                dispatch(loadcart())
-            } 
-            
-        })
-    }
-
-    useEffect(() => {
-        console.log('inside useeffect=',effectRan.current,effectRan)
-        /* if (effectRan.current){
-            createOrder()
-        }
-        effectRan.current = true; */
-        createOrder()
-        
-    }, []);
 
 
     return (
