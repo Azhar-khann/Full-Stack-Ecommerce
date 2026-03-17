@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: false }));
 app.set('trust proxy', 1)
 
 app.use(cors({
-  origin: ['https://www.mykickspro.store','http://localhost:3000'],
+  origin: ['https://www.mykickspro.store','http://localhost:3000','https://ecommerce-frontend-ttem.onrender.com'],
   credentials: true  
 }));
 
