@@ -1,1 +1,1 @@
-export const serverUrl = 'https://serverurl.mykickspro.store';
+export const serverUrl = 'https://ecommerce-backend-glh5.onrender.com';
